@@ -5195,27 +5195,28 @@
       "Microsoft.AspNet.WebApi.Client >= 5.2.7",
       "Microsoft.EntityFrameworkCore >= 6.0.3",
       "Newtonsoft.Json >= 13.0.1",
-      "System.Net.Http.Json >= 6.0.0"
+      "System.Net.Http.Json >= 6.0.0",
+      "System.Text.Encoding >= 4.3.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mderleta\\.nuget\\packages\\": {},
+    "C:\\Users\\micha\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mderleta\\OneDrive - The Open University\\Development\\CouchDBConnector\\CouchDBConnector.csproj",
+      "projectUniqueName": "C:\\Development\\CouchDBConnector\\CouchDBConnector.csproj",
       "projectName": "CouchDBConnector",
-      "projectPath": "C:\\Users\\mderleta\\OneDrive - The Open University\\Development\\CouchDBConnector\\CouchDBConnector.csproj",
-      "packagesPath": "C:\\Users\\mderleta\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mderleta\\OneDrive - The Open University\\Development\\CouchDBConnector\\obj\\",
+      "projectPath": "C:\\Development\\CouchDBConnector\\CouchDBConnector.csproj",
+      "packagesPath": "C:\\Users\\micha\\.nuget\\packages\\",
+      "outputPath": "C:\\Development\\CouchDBConnector\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\mderleta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\micha\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5257,6 +5258,10 @@
           "System.Net.Http.Json": {
             "target": "Package",
             "version": "[6.0.0, )"
+          },
+          "System.Text.Encoding": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           }
         },
         "imports": [
@@ -5274,7 +5279,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.104\\RuntimeIdentifierGraph.json"
       }
     }
   }

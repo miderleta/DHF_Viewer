@@ -23,6 +23,7 @@ namespace CouchDBConnector
         //CouchDB client
         public static void InitializeCouchClient()
         {
+            //code based on https://stackoverflow.com/questions/56931657/calling-api-with-header-username-and-password-in-c-sharp
             var byteArray = Encoding.ASCII.GetBytes("userM:XCSirz12");
             ApiCouchClient = new HttpClient();
             //ApiCouchClient.BaseAddress = new Uri("http://127.0.0.1:5984/");

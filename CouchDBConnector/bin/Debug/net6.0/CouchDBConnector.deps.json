@@ -11,7 +11,8 @@
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
           "Microsoft.EntityFrameworkCore": "6.0.3",
           "Newtonsoft.Json": "13.0.1",
-          "System.Net.Http.Json": "6.0.0"
+          "System.Net.Http.Json": "6.0.0",
+          "System.Text.Encoding": "4.3.0"
         },
         "runtime": {
           "CouchDBConnector.dll": {}

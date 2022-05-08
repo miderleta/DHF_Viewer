@@ -28,6 +28,20 @@ catch (Exception ex)
     WriteLine("Access to DB closed. Unathorised");
 }
 
+//testing POST
+try
+{
+    var receivedData = await dataLoader.CreateNewDocument(db_name);
+    WriteLine("Sucess! The Output is: ");
+    WriteLine(receivedData);
+}
+catch (Exception ex)
+{
+    WriteLine(ex.Message);
+    WriteLine("Access to DB closed. Unathorised");
+}
+
+
 
 
 
