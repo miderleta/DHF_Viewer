@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BbGtOLXW4hmsE4RinTzRXK+wJsXzFcp08IGjff/DxsFbD9B6o6vpDk5Yt+lH12uAzH30wV9EXfyHrTF7DkVTcA==",
+  "dgSpecHash": "qW7C90ccihB3g9AE9Uly85Y7atoBFIAbf2vOovTwUqSSgVd1OV6keNT8FZy/IxILAUwi9bObhPROlqQubA1IGw==",
   "success": true,
-  "projectFilePath": "C:\\Development\\CouchDBConnector\\CouchDBConnector.csproj",
+  "projectFilePath": "C:\\Development\\DHF_Viewer\\CouchDBConnector\\CouchDBConnector.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\micha\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\micha\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.3\\microsoft.entityframeworkcore.6.0.3.nupkg.sha512",
