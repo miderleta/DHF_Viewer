@@ -1,24 +1,21 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using CouchDBConnector;
+using CouchDBConnector.Interfaces;
 using static System.Console;
 
 WriteLine("Program Started");
-//ApiHelper.InitializeClient();
-
-//int comicNumber = 2604;
-//var ComicLoader = new ComicProcessor();
-//var comicData = await ComicLoader.LoadComic(comicNumber);
-
-//WriteLine(comicData.Num);
-//WriteLine(comicData.Img);
 
 //For connecting to CouchDB
-ApiHelper.InitializeCouchClient();
+IApiHelper client = new ApiHelper();
+client.InitializeCouchClient();
 var db_name = "dhf_viewer";
 var dataLoader = new CouchProcessor();
+dataLoader.setEndpointAddress(db_name);
+
+//retriving database info
 try
 {
-    var receivedData = await dataLoader.LoadCouchData(db_name);
+    var receivedData = await dataLoader.LoadCouchData();
     WriteLine("Database name: " + receivedData.DB_Name);
     WriteLine("Number of documents in the databse: " + receivedData.Doc_Count);
 }
@@ -28,10 +25,10 @@ catch (Exception ex)
     WriteLine("Access to DB closed. Unathorised");
 }
 
-//testing POST
+//creating new document
 try
 {
-    var receivedData = await dataLoader.CreateNewDocument(db_name);
+    var receivedData = await dataLoader.CreateNewDocument();
     WriteLine("Sucess! The Output is: ");
     WriteLine(receivedData);
 }
