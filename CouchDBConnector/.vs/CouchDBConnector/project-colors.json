@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "42c52886-4ccd-4ca0-90f2-7c153dc7e80b": {
+      "ProjectGuid": "42c52886-4ccd-4ca0-90f2-7c153dc7e80b",
+      "DisplayName": "CouchDBConnector",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}
