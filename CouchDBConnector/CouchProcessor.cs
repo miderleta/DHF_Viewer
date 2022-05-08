@@ -10,21 +10,42 @@ namespace CouchDBConnector
 {
     public class CouchProcessor
     {
-        //calls CouchDB API and retrives init data 
-        public async Task<CouchModel> LoadCouchData(string db_name) //I may want to use a database name here as a variable
-        {
-            string url = "";
-            //const string userName = "userM";
-            //const string password = "XCSirz12";
+        string endpointAddress = "";
 
+        public string getEndpointAddress()
+        {
+            return this.endpointAddress;
+        }
+
+        public void setEndpointAddress(string db_name)
+        {
+            //create endpoint url
             if (db_name != "")
             {
-                url = $"http://127.0.0.1:5984/{ db_name }";
+                this.endpointAddress = $"http://127.0.0.1:5984/{ db_name }";
             }
             else
             {
-                url = "http://127.0.0.1:5984/";
+                this.endpointAddress = "http://127.0.0.1:5984/";
             }
+        }
+
+        //calls CouchDB API and retrives init data 
+        public async Task<CouchModel> LoadCouchData() //I may want to use a database name here as a variable
+        {
+            //string url = "";
+
+            //create endpoint url
+            //if (db_name != "")
+            //{
+            //    url = $"http://127.0.0.1:5984/{ db_name }";
+            //}
+            //else
+            //{
+            //    url = "http://127.0.0.1:5984/";
+            //}
+
+            string url = this.getEndpointAddress();
 
             //make a call to the API using ApiClient
             using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.GetAsync(url))
@@ -42,24 +63,24 @@ namespace CouchDBConnector
             }
         }
 
-        public async Task<String> CreateNewDocument(string db_name)
+        public async Task<String> CreateNewDocument()
         {
-            string url = "";
-            if (db_name != "")
-            {
-                url = $"http://127.0.0.1:5984/{ db_name }";
-            }
-            else
-            {
-                url = "http://127.0.0.1:5984/";
-            }
-
+            //string url = "";
+            //if (db_name != "")
+            //{
+            //    url = $"http://127.0.0.1:5984/{ db_name }";
+            //}
+            //else
+            //{
+            //    url = "http://127.0.0.1:5984/";
+            //}
+            string url = this.getEndpointAddress();
             var documentData = new NewDocumentModel()
             {
-                documentNumber = "H001-001-003",
-                documentDesc = "Another new Document",
+                documentNumber = "H001-001-004",
+                documentDesc = "Yet Another new Document",
                 documentRev = "AA",
-                documentType = "Test Plan"
+                documentType = "Validation Plan"
             };
 
             var documentDataJson = JsonConvert.SerializeObject(documentData);

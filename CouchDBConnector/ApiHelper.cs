@@ -4,24 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
+using CouchDBConnector.Interfaces;
 
 namespace CouchDBConnector
 {
-    public class ApiHelper
+    public class ApiHelper : IApiHelper
     {
-        public static HttpClient ApiClient { get; set; }
         public static HttpClient ApiCouchClient { get; set; }
 
-        public static void InitializeClient()
-        {
-            ApiClient = new HttpClient();
-            //ApiCLient.BaseAddress = new Uri("http://127.0.0.1:5984/");
-            ApiClient.DefaultRequestHeaders.Accept.Clear();
-            ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        }
-
         //CouchDB client
-        public static void InitializeCouchClient()
+        public void InitializeCouchClient()
         {
             //code based on https://stackoverflow.com/questions/56931657/calling-api-with-header-username-and-password-in-c-sharp
             var byteArray = Encoding.ASCII.GetBytes("userM:XCSirz12");

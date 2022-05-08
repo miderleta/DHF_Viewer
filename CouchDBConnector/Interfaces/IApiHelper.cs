@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CouchDBConnector
+namespace CouchDBConnector.Interfaces
 {
-    public class ComicModel
+    public interface IApiHelper
     {
-        public int Num { get; set; }
-        public string Img { get; set; }
+        void InitializeCouchClient();
     }
 }
