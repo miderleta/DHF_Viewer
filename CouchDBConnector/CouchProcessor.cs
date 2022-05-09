@@ -33,18 +33,6 @@ namespace CouchDBConnector
         //calls CouchDB API and retrives init data 
         public async Task<CouchModel> LoadCouchData() //I may want to use a database name here as a variable
         {
-            //string url = "";
-
-            //create endpoint url
-            //if (db_name != "")
-            //{
-            //    url = $"http://127.0.0.1:5984/{ db_name }";
-            //}
-            //else
-            //{
-            //    url = "http://127.0.0.1:5984/";
-            //}
-
             string url = this.getEndpointAddress();
 
             //make a call to the API using ApiClient
@@ -65,16 +53,8 @@ namespace CouchDBConnector
 
         public async Task<String> CreateNewDocument()
         {
-            //string url = "";
-            //if (db_name != "")
-            //{
-            //    url = $"http://127.0.0.1:5984/{ db_name }";
-            //}
-            //else
-            //{
-            //    url = "http://127.0.0.1:5984/";
-            //}
             string url = this.getEndpointAddress();
+
             var documentData = new NewDocumentModel()
             {
                 documentNumber = "H001-001-004",
@@ -83,10 +63,11 @@ namespace CouchDBConnector
                 documentType = "Validation Plan"
             };
 
+            //convert model data to JSON and save it as payload
             var documentDataJson = JsonConvert.SerializeObject(documentData);
             var payload = new StringContent(documentDataJson, Encoding.UTF8, "application/json");
 
-            //make a call to the API using ApiClient
+            //make a call to the API using ApiClient (POST)
             using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.PostAsync(url, payload))
             {
                 if (response.IsSuccessStatusCode)
