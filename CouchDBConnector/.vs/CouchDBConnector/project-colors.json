@@ -10,7 +10,22 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Miscellaneous Files",
       "ColorIndex": -1
+    },
+    "0618795c-de88-4010-bc35-dea5add155b9": {
+      "ProjectGuid": "0618795c-de88-4010-bc35-dea5add155b9",
+      "DisplayName": "CouchDBConnector.Test",
+      "ColorIndex": 1
+    },
+    "f90386db-2218-4b31-a56f-e98a99dfff11": {
+      "ProjectGuid": "f90386db-2218-4b31-a56f-e98a99dfff11",
+      "DisplayName": "CouchDBConnector.Test",
+      "ColorIndex": 2
+    },
+    "741c5891-bdbe-4fa5-8dcb-7704d236c915": {
+      "ProjectGuid": "741c5891-bdbe-4fa5-8dcb-7704d236c915",
+      "DisplayName": "CouchDBConnector.Tests",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 4
 }
