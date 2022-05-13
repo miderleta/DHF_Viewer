@@ -5,12 +5,10 @@ using static System.Console;
 
 WriteLine("Program Started");
 
-//For connecting to CouchDB
+//Init HttpClient and CouchProcessor objects
 IApiHelper client = new ApiHelper();
 client.InitializeCouchClient();
-var db_name = "dhf_viewer";
 var dataLoader = new CouchProcessor();
-dataLoader.setEndpointAddress(db_name);
 
 //retriving database info
 try
@@ -25,10 +23,40 @@ catch (Exception ex)
     WriteLine("Access to DB closed. Unathorised");
 }
 
-//creating new document
+////creating new document
+//try
+//{
+//    WriteLine("Creting New Document");
+//    var receivedData = await dataLoader.CreateNewDocument();
+//    WriteLine("Sucess! The Output is: ");
+//    WriteLine(receivedData);
+//}
+//catch (Exception ex)
+//{
+//    WriteLine(ex.Message);
+//    WriteLine("Access to DB closed. Unathorised");
+//}
+
+//read document data
+//try
+//{
+//    var receivedData = await dataLoader.ReadDocumentData();
+//    WriteLine("Document Number: " + receivedData._id);
+//    WriteLine("Title: " + receivedData.Title);
+//    WriteLine("Revision: " + receivedData.Revision);
+//    WriteLine("Type: " + receivedData.Type);
+//}
+//catch (Exception ex)
+//{
+//    WriteLine(ex.Message);
+//    WriteLine("Access to DB closed. Unathorised");
+//}
+
+//updating document
 try
 {
-    var receivedData = await dataLoader.CreateNewDocument();
+    WriteLine("\nUpdating a Document");
+    var receivedData = await dataLoader.UpdateDocument();
     WriteLine("Sucess! The Output is: ");
     WriteLine(receivedData);
 }
@@ -37,6 +65,20 @@ catch (Exception ex)
     WriteLine(ex.Message);
     WriteLine("Access to DB closed. Unathorised");
 }
+
+////delete document
+//try
+//{
+//    WriteLine("\nDeleting a Document");
+//    var receivedData = await dataLoader.DeleteDocument();
+//    WriteLine("Sucess! The Output is: ");
+//    WriteLine(receivedData);
+//}
+//catch (Exception ex)
+//{
+//    WriteLine(ex.Message);
+//    WriteLine("Access to DB closed. Unathorised");
+//}
 
 
 

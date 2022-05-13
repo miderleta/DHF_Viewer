@@ -19,26 +19,19 @@ namespace CouchDBConnector.Tests
         }
 
         [Test]
-        public void GetEndpointAddress_Null_ReturnsEmpty()
-        {
-            string result = couchProcessor.getEndpointAddress();
-            Assert.That(result, Is.EqualTo(""));
-        }
-
-        [Test]
-        public void GetEndpointAddress_databseName_ReturnsdatabseName()
-        {
-            couchProcessor.setEndpointAddress("databaseName");
-            string result = couchProcessor.getEndpointAddress();
-            Assert.That(result, Is.EqualTo("http://127.0.0.1:5984/databaseName"));
-        }
-
-        [Test]
         public void SetEndpointAddress_NoName_BaseAddress()
         {
             couchProcessor.setEndpointAddress("");
             string result = couchProcessor.getEndpointAddress();
             Assert.That(result, Is.EqualTo("http://127.0.0.1:5984/"));
+        }
+
+        [TestCase("", "http://127.0.0.1:5984/")]
+        [TestCase("databaseName", "http://127.0.0.1:5984/databaseName")]
+        public void GetEndpointAddressTest(string value, string result)
+        {
+            couchProcessor.setEndpointAddress(value);
+            Assert.That(result, Is.EqualTo(couchProcessor.getEndpointAddress()));
         }
     }
 }
