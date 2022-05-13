@@ -9,12 +9,12 @@ namespace CouchDBConnector
     public class CouchModel
     {
         public string? CouchDB { get; set; }
-        public string Version { get; set; }
+        public string? Version { get; set; }
 
-        public string DB_Name { get; set; }
-        public object Sizes { get; set; }
+        public string? DB_Name { get; set; }
+        public object? Sizes { get; set; }
 
-        public string Doc_Count { get; set; }
+        public string? Doc_Count { get; set; }
 
     }
 }
