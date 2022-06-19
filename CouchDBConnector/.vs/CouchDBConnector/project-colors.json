@@ -25,7 +25,12 @@
       "ProjectGuid": "741c5891-bdbe-4fa5-8dcb-7704d236c915",
       "DisplayName": "CouchDBConnector.Tests",
       "ColorIndex": 3
+    },
+    "c3353d9c-a54a-4e2b-8199-a15795fcf1b9": {
+      "ProjectGuid": "c3353d9c-a54a-4e2b-8199-a15795fcf1b9",
+      "DisplayName": "DHF_Viewer_WebApp",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }

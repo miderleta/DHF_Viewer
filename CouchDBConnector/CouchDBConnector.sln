@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CouchDBConnector", "CouchDBConnector.csproj", "{42C52886-4CCD-4CA0-90F2-7C153DC7E80B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouchDBConnector.Tests", "..\CouchDBConnector.Tests\CouchDBConnector.Tests.csproj", "{741C5891-BDBE-4FA5-8DCB-7704D236C915}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CouchDBConnector.Tests", "..\CouchDBConnector.Tests\CouchDBConnector.Tests.csproj", "{741C5891-BDBE-4FA5-8DCB-7704D236C915}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DHF_Viewer_WebApp", "..\DHF_Viewer_WebApp\DHF_Viewer_WebApp.csproj", "{C3353D9C-A54A-4E2B-8199-A15795FCF1B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{741C5891-BDBE-4FA5-8DCB-7704D236C915}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{741C5891-BDBE-4FA5-8DCB-7704D236C915}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{741C5891-BDBE-4FA5-8DCB-7704D236C915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3353D9C-A54A-4E2B-8199-A15795FCF1B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3353D9C-A54A-4E2B-8199-A15795FCF1B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3353D9C-A54A-4E2B-8199-A15795FCF1B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3353D9C-A54A-4E2B-8199-A15795FCF1B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

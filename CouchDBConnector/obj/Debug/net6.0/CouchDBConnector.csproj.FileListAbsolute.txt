@@ -27,7 +27,6 @@ C:\Development\CouchDBConnector\obj\Debug\net6.0\CouchDBConnector.pdb
 C:\Development\CouchDBConnector\obj\Debug\net6.0\CouchDBConnector.genruntimeconfig.cache
 C:\Development\CouchDBConnector\bin\Debug\net6.0\System.Net.Http.Formatting.dll
 C:\Development\CouchDBConnector\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
-C:\Development\DHF_Viewer\CouchDBConnector\obj\Debug\net6.0\CouchDBConnector.csproj.AssemblyReference.cache
 C:\Development\DHF_Viewer\CouchDBConnector\obj\Debug\net6.0\CouchDBConnector.GeneratedMSBuildEditorConfig.editorconfig
 C:\Development\DHF_Viewer\CouchDBConnector\obj\Debug\net6.0\CouchDBConnector.AssemblyInfoInputs.cache
 C:\Development\DHF_Viewer\CouchDBConnector\obj\Debug\net6.0\CouchDBConnector.AssemblyInfo.cs
@@ -56,3 +55,4 @@ C:\Development\DHF_Viewer\CouchDBConnector\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Development\DHF_Viewer\CouchDBConnector\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 C:\Development\DHF_Viewer\CouchDBConnector\obj\Debug\net6.0\CouchDBConnector.csproj.CopyComplete
 C:\Development\DHF_Viewer\CouchDBConnector\obj\Debug\net6.0\CouchDBConnector.genruntimeconfig.cache
+C:\Development\DHF_Viewer\CouchDBConnector\obj\Debug\net6.0\CouchDBConnector.csproj.AssemblyReference.cache

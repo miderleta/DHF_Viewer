@@ -9,7 +9,7 @@ using CouchDBConnector.Models;
 
 namespace CouchDBConnector
 {
-    public class CouchProcessor
+    public class CouchProcessor : ICouchProcessor
     {
         public const string DatabaseUrl = "http://127.0.0.1:5984/dhf_viewer";
 
@@ -77,7 +77,7 @@ namespace CouchDBConnector
                 {
                     var result = response.Content.ReadAsStringAsync().Result;
 
-                    return result; 
+                    return result;
                 }
                 else
                 {
