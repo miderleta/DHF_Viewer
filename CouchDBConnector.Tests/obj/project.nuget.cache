@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tYlhQIjRk08iHXFv/hQkfI9dYETkiM5kVgihzq2Swh0vjsyQL5i2PIdY2P34jeg0vlVFzs22u4+luTSCnzE7uA==",
+  "dgSpecHash": "v/HH6Ng77Van5aEHJ2aXfJiVgBieBslIQ/KaLTnUUaxW74CL0NhRXzgMPcAkLmfdjzRQb79kE2Aa2sK8vleo3A==",
   "success": true,
   "projectFilePath": "C:\\Development\\DHF_Viewer\\CouchDBConnector.Tests\\CouchDBConnector.Tests.csproj",
   "expectedPackageFiles": [

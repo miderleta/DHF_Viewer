@@ -18,7 +18,6 @@ namespace CouchDBConnector
             //code based on https://stackoverflow.com/questions/56931657/calling-api-with-header-username-and-password-in-c-sharp
             var byteArray = Encoding.ASCII.GetBytes("userM:XCSirz12");
             ApiCouchClient = new HttpClient();
-            //ApiCouchClient.BaseAddress = new Uri("http://127.0.0.1:5984/");
             ApiCouchClient.DefaultRequestHeaders.Accept.Clear();
             ApiCouchClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             ApiCouchClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
