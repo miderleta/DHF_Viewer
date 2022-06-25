@@ -70,7 +70,7 @@ namespace CouchDBConnector
             var payloadDataJson = JsonConvert.SerializeObject(payloadData);
             var payload = new StringContent(payloadDataJson, Encoding.UTF8, "application/json");
 
-            //make a call to the API using ApiClient (POST)
+            //make a call to the API using ApiClient (PUT)
             using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.PutAsync(urlWithDocID, payload))
             {
                 if (response.IsSuccessStatusCode)
