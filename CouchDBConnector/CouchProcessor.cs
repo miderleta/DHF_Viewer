@@ -14,15 +14,15 @@ namespace CouchDBConnector
         public const string DatabaseUrl = "http://127.0.0.1:5984/dhf_viewer";
 
         //this will be done with user's input
-        DocumentModel documentData = new DocumentModel()
-        {
-            _id = "H001-001-004",
-            _rev = "5-a6dd80bd6bc119576833d6b97d4bb236",
-            Title = "Zelda URD",
-            Type = "URD",
-            Revision = "AA",
-            Product = "360P"
-        };
+        //DocumentModel documentData = new DocumentModel()
+        //{
+        //    _id = "H001-001-005",
+        //    _rev = "5-a6dd80bd6bc119576833d6b97d4bb236",
+        //    Title = "Zelda URD",
+        //    Type = "URD",
+        //    Revision = "AA",
+        //    Product = "360P"
+        //};
 
         public string getEndpointAddress()
         {
@@ -51,7 +51,7 @@ namespace CouchDBConnector
         }
 
         //create document
-        public async Task<String> CreateNewDocument()
+        public async Task<String> CreateNewDocument(DocumentModel documentData)
         {
             string url = this.getEndpointAddress();
 
@@ -59,7 +59,7 @@ namespace CouchDBConnector
             {
                 Title = documentData.Title,
                 Type = documentData.Type,
-                Revison = documentData.Revision,
+                Revision = documentData.Revision,
                 Product = documentData.Product,
             };
 
@@ -89,7 +89,7 @@ namespace CouchDBConnector
 
         //Read document data
         ////calls CouchDB API and retrives document Data 
-        public async Task<DocumentModel> ReadDocumentData()
+        public async Task<DocumentModel> ReadDocumentData(DocumentModel documentData)
         {
             string url = this.getEndpointAddress();
 
@@ -115,21 +115,34 @@ namespace CouchDBConnector
         //Update document
         //This is basic implementation of how to update the document
         //this will have to be amended to include user's input and reading it from the object.
-        public async Task<String> UpdateDocument()
+        public async Task<String> UpdateDocument(DocumentModel documentData)
         {
             string url = this.getEndpointAddress();
 
             //crete documentID using documentNumber and pass it on in databaseURL
             string urlWithDocID = url + "/" + documentData._id;
 
+            //query the databse to retrive the _rev number of the document
+            var couchDocRev = ReadDocumentData(documentData).Result._rev;
+
+            //assign required info to payloadData variable
             var payloadData = new UpdateDocumentModel()
             {
                 Title = documentData.Title,
-                _rev = documentData._rev,
+                _rev = couchDocRev,
                 Type = documentData.Type,
                 Revison = documentData.Revision,
                 Product = documentData.Product,
             };
+
+            //var payloadData = new UpdateDocumentModel()
+            //{
+            //    Title = documentData.Title,
+            //    _rev = documentData._rev,
+            //    Type = documentData.Type,
+            //    Revison = documentData.Revision,
+            //    Product = documentData.Product,
+            //};
 
             //convert model data to JSON and save it as payload
             var payloadDataJson = JsonConvert.SerializeObject(payloadData);
@@ -155,7 +168,7 @@ namespace CouchDBConnector
         //Delete document
         //This is basic implementation of how to delete a document
         //this will have to be amended to include user's input and reading it from the object.#
-        public async Task<String> DeleteDocument()
+        public async Task<String> DeleteDocument(DocumentModel documentData)
         {
             string url = this.getEndpointAddress();
 
