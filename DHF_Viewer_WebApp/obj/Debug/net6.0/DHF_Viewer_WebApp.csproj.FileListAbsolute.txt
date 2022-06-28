@@ -5,7 +5,6 @@ C:\Development\DHF_Viewer\DHF_Viewer_WebApp\bin\Debug\net6.0\DHF_Viewer_WebApp.e
 C:\Development\DHF_Viewer\DHF_Viewer_WebApp\bin\Debug\net6.0\DHF_Viewer_WebApp.deps.json
 C:\Development\DHF_Viewer\DHF_Viewer_WebApp\bin\Debug\net6.0\DHF_Viewer_WebApp.runtimeconfig.json
 C:\Development\DHF_Viewer\DHF_Viewer_WebApp\bin\Debug\net6.0\DHF_Viewer_WebApp.dll
-C:\Development\DHF_Viewer\DHF_Viewer_WebApp\bin\Debug\net6.0\ref\DHF_Viewer_WebApp.dll
 C:\Development\DHF_Viewer\DHF_Viewer_WebApp\bin\Debug\net6.0\DHF_Viewer_WebApp.pdb
 C:\Development\DHF_Viewer\DHF_Viewer_WebApp\obj\Debug\net6.0\DHF_Viewer_WebApp.csproj.AssemblyReference.cache
 C:\Development\DHF_Viewer\DHF_Viewer_WebApp\obj\Debug\net6.0\DHF_Viewer_WebApp.GeneratedMSBuildEditorConfig.editorconfig
@@ -36,3 +35,4 @@ C:\Development\DHF_Viewer\DHF_Viewer_WebApp\bin\Debug\net6.0\Newtonsoft.Json.Bso
 C:\Development\DHF_Viewer\DHF_Viewer_WebApp\bin\Debug\net6.0\CouchDBConnector.dll
 C:\Development\DHF_Viewer\DHF_Viewer_WebApp\bin\Debug\net6.0\CouchDBConnector.pdb
 C:\Development\DHF_Viewer\DHF_Viewer_WebApp\obj\Debug\net6.0\DHF_Viewer_WebApp.csproj.CopyComplete
+C:\Development\DHF_Viewer\DHF_Viewer_WebApp\obj\Debug\net6.0\refint\DHF_Viewer_WebApp.dll

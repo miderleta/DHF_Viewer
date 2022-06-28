@@ -512,7 +512,7 @@
           "lib/netstandard2.0/NuGet.Frameworks.dll": {}
         }
       },
-      "NUnit/3.13.2": {
+      "NUnit/3.13.3": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "2.0.0"
@@ -527,7 +527,7 @@
           "build/NUnit.props": {}
         }
       },
-      "NUnit3TestAdapter/4.0.0": {
+      "NUnit3TestAdapter/4.2.1": {
         "type": "package",
         "build": {
           "build/netcoreapp2.1/NUnit3TestAdapter.props": {}
@@ -663,6 +663,7 @@
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
           "Microsoft.EntityFrameworkCore": "6.0.3",
+          "NUnit": "3.13.3",
           "Newtonsoft.Json": "13.0.1",
           "System.Net.Http.Json": "6.0.0",
           "System.Text.Encoding": "4.3.0"
@@ -1779,10 +1780,10 @@
         "nuget.frameworks.nuspec"
       ]
     },
-    "NUnit/3.13.2": {
-      "sha512": "u+fz/lXyR4vlamySNAEMrXvh+GhAQiB6/aVZtU5WjivR5zF26Ui0tfteDtWqT90k9D8y6g8rFKYQC97Z7d195w==",
+    "NUnit/3.13.3": {
+      "sha512": "KNPDpls6EfHwC3+nnA67fh5wpxeLb3VLFAfLxrug6JMYDLHH6InaQIWR7Sc3y75d/9IKzMksH/gi08W7XWbmnQ==",
       "type": "package",
-      "path": "nunit/3.13.2",
+      "path": "nunit/3.13.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1799,14 +1800,14 @@
         "lib/net45/nunit.framework.xml",
         "lib/netstandard2.0/nunit.framework.dll",
         "lib/netstandard2.0/nunit.framework.xml",
-        "nunit.3.13.2.nupkg.sha512",
+        "nunit.3.13.3.nupkg.sha512",
         "nunit.nuspec"
       ]
     },
-    "NUnit3TestAdapter/4.0.0": {
-      "sha512": "5gCkytgQWL93M5s9Rnl4CfSUhn95VsuMVLYjmZe8K7dNRF7kzrBMPsBTyLNCga5qLW7RM/o591J+HVrV1QMaVQ==",
+    "NUnit3TestAdapter/4.2.1": {
+      "sha512": "kgH8VKsrcZZgNGQXRpVCrM7TnNz9li3b/snH+YmnXUNqsaWa1Xw9EQWHpbzq4Li2FbTjTE/E5N5HdLNXzZ8BpQ==",
       "type": "package",
-      "path": "nunit3testadapter/4.0.0",
+      "path": "nunit3testadapter/4.2.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1824,7 +1825,7 @@
         "build/netcoreapp2.1/nunit.engine.core.dll",
         "build/netcoreapp2.1/nunit.engine.dll",
         "build/netcoreapp2.1/testcentric.engine.metadata.dll",
-        "nunit3testadapter.4.0.0.nupkg.sha512",
+        "nunit3testadapter.4.2.1.nupkg.sha512",
         "nunit3testadapter.nuspec"
       ]
     },
@@ -2198,8 +2199,8 @@
     "net6.0": [
       "CouchDBConnector >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.11.0",
-      "NUnit >= 3.13.2",
-      "NUnit3TestAdapter >= 4.0.0",
+      "NUnit >= 3.13.3",
+      "NUnit3TestAdapter >= 4.2.1",
       "coverlet.collector >= 3.1.0"
     ]
   },
@@ -2257,11 +2258,11 @@
           },
           "NUnit": {
             "target": "Package",
-            "version": "[3.13.2, )"
+            "version": "[3.13.3, )"
           },
           "NUnit3TestAdapter": {
             "target": "Package",
-            "version": "[4.0.0, )"
+            "version": "[4.2.1, )"
           },
           "coverlet.collector": {
             "target": "Package",

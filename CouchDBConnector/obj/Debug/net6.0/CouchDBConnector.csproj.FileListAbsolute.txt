@@ -56,3 +56,4 @@ C:\Development\DHF_Viewer\CouchDBConnector\obj\Debug\net6.0\CouchDBConnector.csp
 C:\Development\DHF_Viewer\CouchDBConnector\obj\Debug\net6.0\CouchDBConnector.genruntimeconfig.cache
 C:\Development\DHF_Viewer\CouchDBConnector\obj\Debug\net6.0\CouchDBConnector.csproj.AssemblyReference.cache
 C:\Development\DHF_Viewer\CouchDBConnector\obj\Debug\net6.0\refint\CouchDBConnector.dll
+C:\Development\DHF_Viewer\CouchDBConnector\bin\Debug\net6.0\nunit.framework.dll

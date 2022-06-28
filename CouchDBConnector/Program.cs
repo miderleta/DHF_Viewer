@@ -15,12 +15,12 @@ ICouchProcessor dataLoader = new CouchProcessor();
 //this will be done with user's input
 DocumentModel userInput = new DocumentModel()
 {
-    _id = "H001-001-001",
+    _id = "H032-100-101",
     _rev = "",
-    Title = "Zelda PRD",
-    Type = "PRD",
+    Title = "Test Document 2",
+    Type = "Test 1",
     Revision = "AB",
-    Product = "360P",
+    Product = "Test",
 };
 
 //retriving database info
@@ -39,8 +39,8 @@ catch (Exception ex)
 //creating new document
 //try
 //{
-//    WriteLine("Creting New Document");
-//    var receivedData = await dataLoader.CreateNewDocument(documentData);
+//    WriteLine("\nCreting New Document");
+//    var receivedData = await dataLoader.CreateNewDocument(userInput);
 //    WriteLine("Sucess! The Output is: ");
 //    WriteLine(receivedData);
 //}
@@ -54,6 +54,7 @@ catch (Exception ex)
 //try
 //{
 //    var receivedData = await dataLoader.ReadDocumentData(userInput);
+//    WriteLine("\nReading data for document " + receivedData._id);
 //    WriteLine("Document Number: " + receivedData._id);
 //    WriteLine("Title: " + receivedData.Title);
 //    WriteLine("Revision: " + receivedData.Revision);
@@ -66,20 +67,20 @@ catch (Exception ex)
 //}
 
 //updating document
-try
-{
-    WriteLine("\nUpdating a Document");
-    var receivedData = await dataLoader.UpdateDocument(userInput);
-    WriteLine("Sucess! The Output is: ");
-    WriteLine(receivedData);
-}
-catch (Exception ex)
-{
-    WriteLine(ex.Message);
-    WriteLine("Access to DB closed. Unathorised");
-}
+//try
+//{
+//    WriteLine("\nUpdating a Document");
+//    var receivedData = await dataLoader.UpdateDocument(userInput);
+//    WriteLine("Sucess! The Output is: ");
+//    WriteLine(receivedData);
+//}
+//catch (Exception ex)
+//{
+//    WriteLine(ex.Message);
+//    WriteLine("Access to DB closed. Unathorised");
+//}
 
-////delete document
+//delete document
 //try
 //{
 //    WriteLine("\nDeleting a Document");

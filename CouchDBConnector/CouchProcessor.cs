@@ -11,22 +11,13 @@ namespace CouchDBConnector
 {
     public class CouchProcessor : ICouchProcessor
     {
-        public const string DatabaseUrl = "http://127.0.0.1:5984/dhf_viewer";
+        public string DatabaseUrl = "http://127.0.0.1:5984/dhf_viewer";
 
-        //this will be done with user's input
-        //DocumentModel documentData = new DocumentModel()
-        //{
-        //    _id = "H001-001-005",
-        //    _rev = "5-a6dd80bd6bc119576833d6b97d4bb236",
-        //    Title = "Zelda URD",
-        //    Type = "URD",
-        //    Revision = "AA",
-        //    Product = "360P"
-        //};
+       
 
         public string getEndpointAddress()
         {
-            return CouchProcessor.DatabaseUrl;
+            return this.DatabaseUrl;
         }
 
         //calls CouchDB API and retrives init data 
@@ -50,7 +41,7 @@ namespace CouchDBConnector
             }
         }
 
-        //create document
+        //CREATE DOCUMENT
         public async Task<String> CreateNewDocument(DocumentModel documentData)
         {
             string url = this.getEndpointAddress();
@@ -87,7 +78,7 @@ namespace CouchDBConnector
 
         }
 
-        //Read document data
+        //READ DOCUMENT DATA
         ////calls CouchDB API and retrives document Data 
         public async Task<DocumentModel> ReadDocumentData(DocumentModel documentData)
         {
@@ -112,9 +103,8 @@ namespace CouchDBConnector
             }
         }
 
-        //Update document
-        //This is basic implementation of how to update the document
-        //this will have to be amended to include user's input and reading it from the object.
+        //UPDATE DOCUMENT
+
         public async Task<String> UpdateDocument(DocumentModel documentData)
         {
             string url = this.getEndpointAddress();
@@ -131,18 +121,9 @@ namespace CouchDBConnector
                 Title = documentData.Title,
                 _rev = couchDocRev,
                 Type = documentData.Type,
-                Revison = documentData.Revision,
+                Revision = documentData.Revision,
                 Product = documentData.Product,
             };
-
-            //var payloadData = new UpdateDocumentModel()
-            //{
-            //    Title = documentData.Title,
-            //    _rev = documentData._rev,
-            //    Type = documentData.Type,
-            //    Revison = documentData.Revision,
-            //    Product = documentData.Product,
-            //};
 
             //convert model data to JSON and save it as payload
             var payloadDataJson = JsonConvert.SerializeObject(payloadData);
@@ -165,19 +146,16 @@ namespace CouchDBConnector
 
         }
 
-        //Delete document
-        //This is basic implementation of how to delete a document
-        //this will have to be amended to include user's input and reading it from the object.#
+        //DELETE DOCUMENT
         public async Task<String> DeleteDocument(DocumentModel documentData)
         {
             string url = this.getEndpointAddress();
 
-            //crete documentID using documentNumber and pass it on in databaseURL
-            string urlWithDocID = url + "/" + documentData._id + "?rev=" + documentData._rev;
+            //query the databse to retrive the _rev number of the document
+            var couchDocRev = ReadDocumentData(documentData).Result._rev;
 
-            //convert model data to JSON and save it as payload
-            //var documentDataJson = JsonConvert.SerializeObject(documentData);
-            //var payload = new StringContent(documentDataJson, Encoding.UTF8, "application/json");
+            //crete targetURL with document _id and couchdb revision
+            string urlWithDocID = url + "/" + documentData._id + "?rev=" + couchDocRev;
 
             //make a call to the API using ApiClient (POST)
             using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.DeleteAsync(urlWithDocID))
