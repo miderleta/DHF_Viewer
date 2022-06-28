@@ -11,7 +11,7 @@ namespace CouchDBConnector.Models
         public string? Title { get; set; }
         public string? _rev { get; set; }
         public string? Type { get; set; }
-        public string? Revison { get; set; }
+        public string? Revision { get; set; }
         public string? Product { get; set; }
     }
 }

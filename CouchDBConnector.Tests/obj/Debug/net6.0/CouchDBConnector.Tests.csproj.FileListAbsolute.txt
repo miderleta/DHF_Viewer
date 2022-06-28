@@ -14,7 +14,6 @@ C:\Development\DHF_Viewer\CouchDBConnector.Tests\bin\Debug\net6.0\testcentric.en
 C:\Development\DHF_Viewer\CouchDBConnector.Tests\bin\Debug\net6.0\CouchDBConnector.Tests.deps.json
 C:\Development\DHF_Viewer\CouchDBConnector.Tests\bin\Debug\net6.0\CouchDBConnector.Tests.runtimeconfig.json
 C:\Development\DHF_Viewer\CouchDBConnector.Tests\bin\Debug\net6.0\CouchDBConnector.Tests.dll
-C:\Development\DHF_Viewer\CouchDBConnector.Tests\bin\Debug\net6.0\ref\CouchDBConnector.Tests.dll
 C:\Development\DHF_Viewer\CouchDBConnector.Tests\bin\Debug\net6.0\CouchDBConnector.Tests.pdb
 C:\Development\DHF_Viewer\CouchDBConnector.Tests\bin\Debug\net6.0\System.Net.Http.Formatting.dll
 C:\Development\DHF_Viewer\CouchDBConnector.Tests\bin\Debug\net6.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
@@ -115,3 +114,4 @@ C:\Development\DHF_Viewer\CouchDBConnector.Tests\obj\Debug\net6.0\CouchDBConnect
 C:\Development\DHF_Viewer\CouchDBConnector.Tests\obj\Debug\net6.0\ref\CouchDBConnector.Tests.dll
 C:\Development\DHF_Viewer\CouchDBConnector.Tests\obj\Debug\net6.0\CouchDBConnector.Tests.pdb
 C:\Development\DHF_Viewer\CouchDBConnector.Tests\obj\Debug\net6.0\CouchDBConnector.Tests.genruntimeconfig.cache
+C:\Development\DHF_Viewer\CouchDBConnector.Tests\obj\Debug\net6.0\refint\CouchDBConnector.Tests.dll
