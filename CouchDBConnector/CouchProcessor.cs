@@ -57,6 +57,8 @@ namespace CouchDBConnector
             //crete databse URL with documentID
             string urlWithDocID = url + "/" + documentData._id;
 
+            //code based on the YouTube video by Nick Proud 
+            //avalible at https://www.youtube.com/watch?v=Yi-O-HBGPeU&t=924s&ab_channel=NickProud
             //convert model data to JSON and save it as payload
             var payloadDataJson = JsonConvert.SerializeObject(payloadData);
             var payload = new StringContent(payloadDataJson, Encoding.UTF8, "application/json");
@@ -104,7 +106,6 @@ namespace CouchDBConnector
         }
 
         //UPDATE DOCUMENT
-
         public async Task<String> UpdateDocument(DocumentModel documentData)
         {
             string url = this.getEndpointAddress();

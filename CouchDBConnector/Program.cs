@@ -15,12 +15,12 @@ ICouchProcessor dataLoader = new CouchProcessor();
 //this will be done with user's input
 DocumentModel userInput = new DocumentModel()
 {
-    _id = "H032-100-101",
+    _id = "T000-000-0010",
     _rev = "",
-    Title = "Test Document 2",
-    Type = "Test 1",
-    Revision = "AB",
-    Product = "Test",
+    Title = "Test Document 10",
+    Type = "Test 4",
+    Revision = "AA",
+    Product = "T004",
 };
 
 //retriving database info
@@ -37,28 +37,28 @@ catch (Exception ex)
 }
 
 //creating new document
-//try
-//{
-//    WriteLine("\nCreting New Document");
-//    var receivedData = await dataLoader.CreateNewDocument(userInput);
-//    WriteLine("Sucess! The Output is: ");
-//    WriteLine(receivedData);
-//}
-//catch (Exception ex)
-//{
-//    WriteLine(ex.Message);
-//    WriteLine("Error. Please Try Again.");
-//}
+try
+{
+    WriteLine("\nCreting New Document");
+    var receivedData = await dataLoader.CreateNewDocument(userInput);
+    WriteLine("Sucess! The Output is: ");
+    WriteLine(receivedData);
+}
+catch (Exception ex)
+{
+    WriteLine(ex.Message);
+    WriteLine("Error. Please Try Again.");
+}
 
 //read document data
 //try
 //{
 //    var receivedData = await dataLoader.ReadDocumentData(userInput);
-//    WriteLine("\nReading data for document " + receivedData._id);
-//    WriteLine("Document Number: " + receivedData._id);
-//    WriteLine("Title: " + receivedData.Title);
-//    WriteLine("Revision: " + receivedData.Revision);
-//    WriteLine("Type: " + receivedData.Type);
+//WriteLine("\nReading data for document " + receivedData._id);
+//WriteLine("Document Number: " + receivedData._id);
+//WriteLine("Title: " + receivedData.Title);
+//WriteLine("Revision: " + receivedData.Revision);
+//WriteLine("Type: " + recevedData.Type);
 //}
 //catch (Exception ex)
 //{
@@ -70,9 +70,9 @@ catch (Exception ex)
 //try
 //{
 //    WriteLine("\nUpdating a Document");
-//    var receivedData = await dataLoader.UpdateDocument(userInput);
-//    WriteLine("Sucess! The Output is: ");
-//    WriteLine(receivedData);
+//var receivedData = await dataLoader.UpdateDocument(userInput);
+//WriteLine("Sucess! The Output is: ");
+//WriteLine(receivedData);
 //}
 //catch (Exception ex)
 //{
@@ -84,9 +84,9 @@ catch (Exception ex)
 //try
 //{
 //    WriteLine("\nDeleting a Document");
-//    var receivedData = await dataLoader.DeleteDocument(userInput);
-//    WriteLine("Sucess! The Output is: ");
-//    WriteLine(receivedData);
+//var receivedData = await dataLoader.DeleteDocument(userInput);
+//WriteLine("Sucess! The Output is: ");
+//WriteLine(receivedData);
 //}
 //catch (Exception ex)
 //{
