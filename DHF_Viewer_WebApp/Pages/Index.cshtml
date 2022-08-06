@@ -1,10 +1,66 @@
 ﻿@page
 @model IndexModel
-@{
+@*@{
     ViewData["Title"] = "Home page";
-}
+}*@
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-2">Welcome</h1>
+    <h4>Please select an action:</h4>
+    <div class="container align-middle p-3">
+        <div class="row pt-4 align-middle">
+            <div class="col-6">
+                <h4 class="text-end">Search for a Document</h4>
+            </div>
+            <div class="col-6 text-start">
+                <a asp-page="/Categories/Search" class="btn btn-primary ms-5">Click Here</a>
+            </div>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <h4 class="text-end">Create New Document</h4>
+            </div>
+            <div class="col-6 text-start">
+                <a asp-page="/Categories/Create" class="btn btn-primary ms-5">Click Here</a>
+            </div>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <h4 class="text-end">Edit Document</h4>
+            </div>
+            <div class="col-6 text-start">
+                <a asp-page="/Categories/Edit" class="btn btn-primary ms-5">Click Here</a>
+            </div>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <h4 class="text-end">Delete Document</h4>
+            </div>
+            <div class="col-6 text-start">
+                <a asp-page="/Categories/Delete" class="btn btn-primary ms-5">Click Here</a>
+            </div>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <h4 class="text-end">DHF Reports</h4>
+            </div>
+            <div class="col-6 text-start">
+                <a asp-page="/Categories/Report" class="btn btn-primary ms-5">Click Here</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=" container-sm pt-5">
+    <div class="row justify-content-sm-center text-center">
+        <div class="col col-md-4">
+            <h3 class="display-6">Database info</h3>
+        </div>
+    </div>
+    <div class="row justify-content-sm-center">
+        <div class="col col-md-4 pt-2">
+            <p class="text-start">Database name: @Model.receivedData.Result.DB_Name</p>
+            <p class="text-start">Number of Documents in the Database: @Model.receivedData.Result.Doc_Count</p>
+        </div>
+    </div>
+    
 </div>

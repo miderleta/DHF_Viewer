@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CouchDBConnector", "CouchDB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CouchDBConnector.Tests", "..\CouchDBConnector.Tests\CouchDBConnector.Tests.csproj", "{741C5891-BDBE-4FA5-8DCB-7704D236C915}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DHF_Viewer_WebApp", "..\DHF_Viewer_WebApp\DHF_Viewer_WebApp.csproj", "{C3353D9C-A54A-4E2B-8199-A15795FCF1B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DHF_Viewer_WebApp", "..\DHF_Viewer_WebApp\DHF_Viewer_WebApp.csproj", "{C3353D9C-A54A-4E2B-8199-A15795FCF1B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

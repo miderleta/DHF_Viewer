@@ -10,8 +10,8 @@
         "dependencies": {
           "CouchDBConnector": "1.0.0",
           "Microsoft.NET.Test.Sdk": "16.11.0",
-          "NUnit": "3.13.2",
-          "NUnit3TestAdapter": "4.0.0",
+          "NUnit": "3.13.3",
+          "NUnit3TestAdapter": "4.2.1",
           "coverlet.collector": "3.1.0"
         },
         "runtime": {
@@ -445,18 +445,18 @@
           }
         }
       },
-      "NUnit/3.13.2": {
+      "NUnit/3.13.3": {
         "dependencies": {
           "NETStandard.Library": "2.0.0"
         },
         "runtime": {
           "lib/netstandard2.0/nunit.framework.dll": {
-            "assemblyVersion": "3.13.2.0",
-            "fileVersion": "3.13.2.0"
+            "assemblyVersion": "3.13.3.0",
+            "fileVersion": "3.13.3.0"
           }
         }
       },
-      "NUnit3TestAdapter/4.0.0": {},
+      "NUnit3TestAdapter/4.2.1": {},
       "System.Collections.Immutable/6.0.0": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
@@ -502,6 +502,7 @@
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
           "Microsoft.EntityFrameworkCore": "6.0.3",
+          "NUnit": "3.13.3",
           "Newtonsoft.Json": "13.0.1",
           "System.Net.Http.Json": "6.0.0",
           "System.Text.Encoding": "4.3.0"
@@ -679,19 +680,19 @@
       "path": "nuget.frameworks/5.0.0",
       "hashPath": "nuget.frameworks.5.0.0.nupkg.sha512"
     },
-    "NUnit/3.13.2": {
+    "NUnit/3.13.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-u+fz/lXyR4vlamySNAEMrXvh+GhAQiB6/aVZtU5WjivR5zF26Ui0tfteDtWqT90k9D8y6g8rFKYQC97Z7d195w==",
-      "path": "nunit/3.13.2",
-      "hashPath": "nunit.3.13.2.nupkg.sha512"
+      "sha512": "sha512-KNPDpls6EfHwC3+nnA67fh5wpxeLb3VLFAfLxrug6JMYDLHH6InaQIWR7Sc3y75d/9IKzMksH/gi08W7XWbmnQ==",
+      "path": "nunit/3.13.3",
+      "hashPath": "nunit.3.13.3.nupkg.sha512"
     },
-    "NUnit3TestAdapter/4.0.0": {
+    "NUnit3TestAdapter/4.2.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5gCkytgQWL93M5s9Rnl4CfSUhn95VsuMVLYjmZe8K7dNRF7kzrBMPsBTyLNCga5qLW7RM/o591J+HVrV1QMaVQ==",
-      "path": "nunit3testadapter/4.0.0",
-      "hashPath": "nunit3testadapter.4.0.0.nupkg.sha512"
+      "sha512": "sha512-kgH8VKsrcZZgNGQXRpVCrM7TnNz9li3b/snH+YmnXUNqsaWa1Xw9EQWHpbzq4Li2FbTjTE/E5N5HdLNXzZ8BpQ==",
+      "path": "nunit3testadapter/4.2.1",
+      "hashPath": "nunit3testadapter.4.2.1.nupkg.sha512"
     },
     "System.Collections.Immutable/6.0.0": {
       "type": "package",
