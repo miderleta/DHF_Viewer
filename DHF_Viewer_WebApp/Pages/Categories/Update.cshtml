@@ -1,5 +1,6 @@
 ﻿@page
-@model DHF_Viewer_WebApp.Pages.Categories.CreateModel
+@using DHF_Viewer_WebApp.Models
+@model DHF_Viewer_WebApp.Pages.Categories.UpdateModel;
 @{
 }
 
@@ -15,47 +16,41 @@
 <form method="post">
     <div class="border-bottom p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary pl-3">Create New Document</h2>
+            <h2 class="text-primary pl-3">Edit Document Data</h2>
             <hr />
         </div>
+        <input hidden asp-for="UserInput._rev" class="form-control" value="@Model.UserInput._rev" />
         <div class="mb-3">
             <label asp-for="UserInput._id">Document Number</label>
-            <input asp-for="UserInput._id" class="form-control" required/>
+            <input asp-for="UserInput._id" class="form-control" value="@Model.UserInput._id" />
             <span asp-validation-for="UserInput._id" class="text-danger"></span>
         </div>
+        <div></div>
         <div class="mb-3">
             <label asp-for="UserInput.Title"></label>
-            <input asp-for="UserInput.Title" class="form-control" required/>
+            <input asp-for="UserInput.Title" class="form-control" value="@Model.UserInput.Title"/>
             <span asp-validation-for="UserInput.Title" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="UserInput.Revision"></label>
-            <input asp-for="UserInput.Revision" class="form-control" required/>
+            <input asp-for="UserInput.Revision" class="form-control" value="@Model.UserInput.Revision" />
             <span asp-validation-for="UserInput.Revision" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="UserInput.Product"></label>
-            <input asp-for="UserInput.Product" class="form-control" required/>
+            <input asp-for="UserInput.Product" class="form-control" value="@Model.UserInput.Product" />
             <span asp-validation-for="UserInput.Product" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="UserInput.Type"></label>
-            <select asp-for="UserInput.Type" class="form-control" required>
-                <option disabled selected value="Select Document Type">Select Document Type</option>
-                <option value="Type 1">Type 1</option>
-                <option value="Type 2">Type 2</option>
-                <option value="Type 3">Type 3</option>
-                <option value="Type 4">Type 4</option>
-            </select>
+            <input asp-for="UserInput.Type" class="form-control" value="@Model.UserInput.Type"/>
             <span asp-validation-for="UserInput.Type" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
-        <a asp-page="create" class="btn btn-primary">Reset Form</a>
+        <button type="submit" class="btn btn-primary" style="width:150px;">Update Data</button>
+        <a asp-page="update" class="btn btn-primary">Reset Form</a>
     </div>
-
-    <!-- For Testing -->
-    @*<div class="container">
-        <h3>User Input Was:</h3>
-        <p>@Model.output</p>
-    </div>*@
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -15,7 +15,7 @@ ICouchProcessor dataLoader = new CouchProcessor();
 //this will be done with user's input
 DocumentModel userInput = new DocumentModel()
 {
-    _id = "T000-000-0010",
+    _id = "H001-001-001",
     _rev = "",
     Title = "Test Document 10",
     Type = "Test 4",
@@ -53,7 +53,7 @@ catch (Exception ex)
 //read document data
 //try
 //{
-//    var receivedData = await dataLoader.ReadDocumentData(userInput);
+//var receivedData = await dataLoader.ReadDocumentData(userInput);
 //WriteLine("\nReading data for document " + receivedData._id);
 //WriteLine("Document Number: " + receivedData._id);
 //WriteLine("Title: " + receivedData.Title);
