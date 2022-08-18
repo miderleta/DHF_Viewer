@@ -12,40 +12,52 @@
     </script>
 }
 
-<form method="post">
-    <div class="border-bottom p-3 mt-4">
+<form method="post" class="d-flex align-items-center justify-content-center">
+    <div class="w-75 p-3 mb-2">
         <div class="row pb-2">
             <h2 class="text-primary pl-3">Create New Document</h2>
+            <h5>Please Enter New Document's Data Below and Click Create.</h5>
             <hr />
         </div>
         <div class="mb-3">
-            <label asp-for="UserInput._id">Document Number</label>
+            <label asp-for="UserInput._id" class="mb-1">Document Number</label>
             <input asp-for="UserInput._id" class="form-control" required/>
             <span asp-validation-for="UserInput._id" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="UserInput.Title"></label>
+            <label asp-for="UserInput.Title" class="mb-1"></label>
             <input asp-for="UserInput.Title" class="form-control" required/>
             <span asp-validation-for="UserInput.Title" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="UserInput.Revision"></label>
+            <label asp-for="UserInput.Revision" class="mb-1"></label>
             <input asp-for="UserInput.Revision" class="form-control" required/>
             <span asp-validation-for="UserInput.Revision" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="UserInput.Product"></label>
+            <label asp-for="UserInput.Product" class="mb-1"></label>
             <input asp-for="UserInput.Product" class="form-control" required/>
             <span asp-validation-for="UserInput.Product" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="UserInput.Type"></label>
-            <select asp-for="UserInput.Type" class="form-control" required>
+            <label asp-for="UserInput.Type" class="mb-1"></label>
+            <select asp-for="UserInput.Type" class="form-select" required>
                 <option disabled selected value="Select Document Type">Select Document Type</option>
-                <option value="Type 1">Type 1</option>
-                <option value="Type 2">Type 2</option>
-                <option value="Type 3">Type 3</option>
-                <option value="Type 4">Type 4</option>
+                <option value="BOM">BOM</option>
+                <option value="Components Specification">Components Specification</option>
+                <option value="DMR">DMR</option>
+                <option value="IQOQ Protocol">IQOQ Protocol</option>
+                <option value="Labels">Labels</option>
+                <option value="PFMEA">PFMEA</option>
+                <option value="Process Control Chart">Process Control Chart</option>
+                <option value="Process Flow">Process Flow</option>
+                <option value="Requirements Checklist">Requirements Checklist</option>
+                <option value="Test Plan">Test Plan</option>
+                <option value="Test Protocol">Test Protocol</option>
+                <option value="Test Specification">Test Specification</option>
+                <option value="Visual Inspection Guide">Visual Inspection Guide</option>
+                <option value="Warranty">Warranty</option>
+                <option value="Work Instruction">Work Instruction</option>
             </select>
             <span asp-validation-for="UserInput.Type" class="text-danger"></span>
         </div>
