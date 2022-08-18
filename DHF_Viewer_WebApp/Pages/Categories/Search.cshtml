@@ -2,3 +2,33 @@
 @model DHF_Viewer_WebApp.Pages.Categories.SearchModel
 @{
 }
+
+@if(TempData["success"]!=null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
+}
+
+<form method="post" class="d-flex align-items-center justify-content-center">
+    <div class="w-75 p-3">
+        <div class="row pb-2">
+            <h2 class="text-primary" pl-3">Search</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <h5>Please enter Document Number:</h5>
+            <label asp-for="UserInput._id" class="mb-1" hidden>By Document Number:</label>
+            <input asp-for="UserInput._id" class="form-control" required/>
+            <span asp-validation-for="UserInput._id" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px;">Search</button>
+        <a asp-page="search" class="btn btn-primary">Reset Form</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
