@@ -2,6 +2,8 @@
 using CouchDBConnector;
 using CouchDBConnector.Interfaces;
 using CouchDBConnector.Models;
+using System.Collections;
+using System.Reflection;
 using static System.Console;
 
 WriteLine("Program Started");
@@ -20,7 +22,7 @@ DocumentModel userInput = new DocumentModel()
     Title = "Test Document 10",
     Type = "Test 4",
     Revision = "AA",
-    Product = "T004",
+    Product = "Product C",
 };
 
 //retriving database info
@@ -37,18 +39,18 @@ catch (Exception ex)
 }
 
 //creating new document
-try
-{
-    WriteLine("\nCreting New Document");
-    var receivedData = await dataLoader.CreateNewDocument(userInput);
-    WriteLine("Sucess! The Output is: ");
-    WriteLine(receivedData);
-}
-catch (Exception ex)
-{
-    WriteLine(ex.Message);
-    WriteLine("Error. Please Try Again.");
-}
+//try
+//{
+//    WriteLine("\nCreting New Document");
+//    var receivedData = await dataLoader.CreateNewDocument(userInput);
+//    WriteLine("Sucess! The Output is: ");
+//    WriteLine(receivedData);
+//}
+//catch (Exception ex)
+//{
+//    WriteLine(ex.Message);
+//    WriteLine("Error. Please Try Again.");
+//}
 
 //read document data
 //try
@@ -93,6 +95,40 @@ catch (Exception ex)
 //    WriteLine(ex.Message);
 //    WriteLine("Access to DB closed. Unathorised");
 //}
+
+//REPORTS
+//Get All Documents
+//try
+//{
+//    WriteLine("\n Getting all documents \n");
+//    var receivedData = await dataLoader.ReportAllDocuments();
+//    WriteLine(receivedData.Rows[0].value.Title);
+//    WriteLine(receivedData.Rows.Count());
+//    for (var i = 0; i < receivedData.Rows.Count; i++)
+//    {
+//        WriteLine("\n" + receivedData.Rows[i].value._id + " -- " + receivedData.Rows[i].value.Title + " Rev: " + receivedData.Rows[i].value.Revision);
+//    }
+//}
+//catch (Exception ex)
+//{
+//    WriteLine(ex.Message);
+//}
+
+//Report Doc by product
+try
+{
+    var receivedData = await dataLoader.ReportByProduct(userInput);
+    WriteLine("\n Documents associated with Product C: \n");
+    WriteLine(receivedData.Rows.Count());
+    for (var i = 0; i < receivedData.Rows.Count; i++)
+    {
+        WriteLine("\n" + receivedData.Rows[i].value._id + " -- " + receivedData.Rows[i].value.Title + " Rev: " + receivedData.Rows[i].value.Revision);
+    }
+}
+catch (Exception ex)
+{
+    WriteLine(ex.Message);
+}
 
 
 

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using CouchDBConnector;
 using Newtonsoft.Json;
 using CouchDBConnector.Models;
+using System.Collections;
 
 namespace CouchDBConnector
 {
     public class CouchProcessor : ICouchProcessor
     {
         public string DatabaseUrl = "http://127.0.0.1:5984/dhf_viewer";
-
+        public Object Documents { get; set; }
        
-
         public string getEndpointAddress()
         {
             return this.DatabaseUrl;
@@ -95,7 +95,6 @@ namespace CouchDBConnector
                 if (response.IsSuccessStatusCode)
                 {
                     DocumentModel docData = await response.Content.ReadAsAsync<DocumentModel>();
-
                     return docData;
                 }
                 else
@@ -174,5 +173,97 @@ namespace CouchDBConnector
             }
 
         }
+
+        //REPORTS
+        //ALL DOCUMENTS
+        //this function will call all_docs view in couchDB and return JSON with data for all documents
+        public async Task<ReportModel> ReportAllDocuments()
+        {
+            string url = this.getEndpointAddress();
+
+            //URL to access all_docs view
+            string viewUrl = url + "/_design/by_product/_view/all_products";
+
+            //make a call to the API using ApiClient
+            using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.GetAsync(viewUrl))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    ReportModel docData = await response.Content.ReadAsAsync<ReportModel>();
+                    return docData;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
+
+        //BY PRODUCT
+        //this function will call all_docs view in couchDB and return JSON with data for all documents
+        public async Task<ReportModel> ReportByProduct(DocumentModel documentData)
+        {
+            string url = this.getEndpointAddress();
+            string viewUrl = "";
+            string product = documentData.Product;
+
+            //research case statemnts for c#
+            if (product == null)
+            {
+                //URL to access by_product view
+                viewUrl = url + "";
+            }
+
+            if (product == "Product A")
+            {
+                //URL to access by_product view
+                viewUrl = url + "/_design/by_product/_view/Product_A";
+            }
+
+            if (product == "Product B")
+            {
+                //URL to access by_product view
+                viewUrl = url + "/_design/by_product/_view/Product_B";
+            }
+
+            if (product == "Product C")
+            {
+                //URL to access by_product view
+                viewUrl = url + "/_design/by_product/_view/Product_C";
+            }
+
+            if (product == "Product D")
+            {
+                //URL to access by_product view
+                viewUrl = url + "/_design/by_product/_view/Product_D";
+            }
+
+            if (product == "Product E")
+            {
+                //URL to access by_product view
+                viewUrl = url + "/_design/by_product/_view/Product_E";
+            }
+
+            if (product == "Product F")
+            {
+                //URL to access by_product view
+                viewUrl = url + "/_design/by_product/_view/Product_F";
+            }
+
+            //make a call to the API using ApiClient
+            using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.GetAsync(viewUrl))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    ReportModel docData = await response.Content.ReadAsAsync<ReportModel>();
+                    return docData;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
+
     }
 }
