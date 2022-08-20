@@ -13,5 +13,6 @@ namespace CouchDBConnector
         Task<string> UpdateDocument(DocumentModel documentData);
         Task<ReportModel> ReportAllDocuments();
         Task<ReportModel> ReportByProduct(DocumentModel documentData);
+        Task<ReportModel> SearchByDocumentName(DocumentModel documentData);
     }
 }

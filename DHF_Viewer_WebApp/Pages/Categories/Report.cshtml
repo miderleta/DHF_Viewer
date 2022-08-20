@@ -1,4 +1,61 @@
 ﻿@page
 @model DHF_Viewer_WebApp.Pages.Categories.ReportModel
-@{
+
+@if(TempData["success"]!=null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
 }
+
+<form method="post" class="d-flex align-items-center justify-content-center">
+    <div class="w-75 p-3 mb-2">
+        <div class="row pb-2">
+            <h2 class="text-primary pl-3 mb-2">Reports</h2>
+            <h5>By Product.</h5>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="UserInput.Product" class="mb-1" hidden></label>
+            <select asp-for="UserInput.Product" class="form-select" required>
+                <option disabled selected value="Select Product from the list">Select Product from the list</option>
+                <option value="all_products">All Products</option>
+                <option value="Product A">Product A</option>
+                <option value="Product B">Product B</option>
+                <option value="Product C">Product C</option>
+                <option value="Product D">Product D</option>
+                <option value="Product E">Product E</option>
+                <option value="Product F">Product F</option>
+            </select>
+            <span asp-validation-for="UserInput.Product" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px;">Search</button>
+        <a asp-page="report" class="btn btn-primary">Reset Form</a>
+    </div>
+</form>
+
+ <table class="table table-bordered table-striped mt-2" style="width:100%">
+    <thead>
+        <tr>
+            <th>Document Number</th>
+            <th>Document Title</th>
+            <th>Rev</th>
+            <th>Type</th>
+            <th>Product</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model.Results)
+        {
+            <tr>
+                <td>@obj._id</td>
+                <td>@obj.Title</td>
+                <td>@obj.Revision</td>
+                <td>@obj.Type</td>
+                <td>@obj.Product</td>
+            </tr>  
+        }
+    </tbody>
+</table>
