@@ -200,55 +200,67 @@ namespace CouchDBConnector
         }
 
         //BY PRODUCT
-        //this function will call all_docs view in couchDB and return JSON with data for all documents
+        //this function will call a specified COuchDB view
+        //based on the Product chosen by the user. All documents related to chosen product
+        //will be displayed
         public async Task<ReportModel> ReportByProduct(DocumentModel documentData)
         {
             string url = this.getEndpointAddress();
             string viewUrl = "";
             string product = documentData.Product;
 
-            //research case statemnts for c#
-            if (product == null)
+            //create view URL based on chosen product
+            switch (product)
             {
-                //URL to access by_product view
-                viewUrl = url + "";
+                case "Product A":
+                    viewUrl = url + "/_design/by_product/_view/Product_A";
+                    break;
+                case "Product B":
+                    viewUrl = url + "/_design/by_product/_view/Product_B";
+                    break;
+                case "Product C":
+                    viewUrl = url + "/_design/by_product/_view/Product_C";
+                    break;
+                case "Product D":
+                    viewUrl = url + "/_design/by_product/_view/Product_D";
+                    break;
+                case "Product E":
+                    viewUrl = url + "/_design/by_product/_view/Product_E";
+                    break;
+                case "Product F":
+                    viewUrl = url + "/_design/by_product/_view/Product_F";
+                    break;
+                default:
+                    viewUrl = url + "";
+                    break;
             }
 
-            if (product == "Product A")
+            //make a call to the API using ApiClient
+            using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.GetAsync(viewUrl))
             {
-                //URL to access by_product view
-                viewUrl = url + "/_design/by_product/_view/Product_A";
+                if (response.IsSuccessStatusCode)
+                {
+                    ReportModel docData = await response.Content.ReadAsAsync<ReportModel>();
+                    return docData;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
             }
+        }
 
-            if (product == "Product B")
-            {
-                //URL to access by_product view
-                viewUrl = url + "/_design/by_product/_view/Product_B";
-            }
+        //BY DOCUMENT NAME
+        //this function will call all_docs with a parameter coresponding to a document title
+        //entered bu the user and retur the document data or error
+        public async Task<ReportModel> SearchByDocumentName(DocumentModel documentData)
+        {
+            string url = this.getEndpointAddress();
+            string docTitle = documentData.Title;
+            string modifiedTitle = "\"" + docTitle + "\"";
 
-            if (product == "Product C")
-            {
-                //URL to access by_product view
-                viewUrl = url + "/_design/by_product/_view/Product_C";
-            }
-
-            if (product == "Product D")
-            {
-                //URL to access by_product view
-                viewUrl = url + "/_design/by_product/_view/Product_D";
-            }
-
-            if (product == "Product E")
-            {
-                //URL to access by_product view
-                viewUrl = url + "/_design/by_product/_view/Product_E";
-            }
-
-            if (product == "Product F")
-            {
-                //URL to access by_product view
-                viewUrl = url + "/_design/by_product/_view/Product_F";
-            }
+            //URL to access all_docs view
+            string viewUrl = url + "/_design/by_product/_view/all_products?key=" + modifiedTitle;
 
             //make a call to the API using ApiClient
             using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.GetAsync(viewUrl))

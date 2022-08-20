@@ -19,7 +19,7 @@ DocumentModel userInput = new DocumentModel()
 {
     _id = "H001-001-001",
     _rev = "",
-    Title = "Test Document 10",
+    Title = "PAD Final Test Station IQOQ Protocol",
     Type = "Test 4",
     Revision = "AA",
     Product = "Product C",
@@ -115,10 +115,26 @@ catch (Exception ex)
 //}
 
 //Report Doc by product
+//try
+//{
+//    var receivedData = await dataLoader.ReportByProduct(userInput);
+//    WriteLine("\n Documents associated with Product C: \n");
+//    WriteLine(receivedData.Rows.Count());
+//    for (var i = 0; i < receivedData.Rows.Count; i++)
+//    {
+//        WriteLine("\n" + receivedData.Rows[i].value._id + " -- " + receivedData.Rows[i].value.Title + " Rev: " + receivedData.Rows[i].value.Revision);
+//    }
+//}
+//catch (Exception ex)
+//{
+//    WriteLine(ex.Message);
+//}
+
+//Report Doc by product
 try
 {
-    var receivedData = await dataLoader.ReportByProduct(userInput);
-    WriteLine("\n Documents associated with Product C: \n");
+    var receivedData = await dataLoader.SearchByDocumentName(userInput);
+    WriteLine("\n Document Details: \n");
     WriteLine(receivedData.Rows.Count());
     for (var i = 0; i < receivedData.Rows.Count; i++)
     {
