@@ -17,7 +17,7 @@ namespace DHF_Viewer_WebApp.Pages.Categories
 
         public void OnGet()
         {
-            //UserInput = new ReturnedData();
+            UserInput = new ReturnedData();
         }
 
         public async Task<IActionResult> OnPost()
@@ -35,11 +35,24 @@ namespace DHF_Viewer_WebApp.Pages.Categories
             //call API
             try
             {
+                //Retrive doc data for disply to user
+                var docData = await dataLoader.ReadDocumentData(CouchDBConnectorDocumentModel);
+                if (docData != null)
+                {
+                    UserInput._rev = docData._rev;
+                    UserInput._id = docData._id;
+                    UserInput.Title = docData.Title;
+                    UserInput.Revision = docData.Revision;
+                    UserInput.Product = docData.Product;
+                    UserInput.Type = docData.Type;
+                }
+                
                 var result = await dataLoader.DeleteDocument(CouchDBConnectorDocumentModel);
                 if (result != null)
                 {
                     TempData["success"] = "Document Deleted successfully";
-                    info = "Document " + UserInput._id + " has been deleted.";
+                    //info = "Document " + UserInput._id + " has been deleted.";
+                    info = "Below doument has been deleted:";
                     //return RedirectToPage("delete", UserInput);
                     return Page();
                 }

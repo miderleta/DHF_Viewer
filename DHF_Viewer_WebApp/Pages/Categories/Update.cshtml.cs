@@ -42,6 +42,7 @@ namespace DHF_Viewer_WebApp.Pages.Categories
                 if (result != null)
                 {
                     TempData["success"] = "Document Updated successfully";
+                    return RedirectToPage("edit");
                 }
             }
             catch
@@ -49,6 +50,7 @@ namespace DHF_Viewer_WebApp.Pages.Categories
                 TempData["success"] = "We have an error. Please check your entry";
             }
             return Page();
+            
         }
     }
 }

@@ -24,8 +24,8 @@
             <input asp-for="UserInput._id" class="form-control" required/>
             <span asp-validation-for="UserInput._id" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px;">Delete</button>
-        <a asp-page="delete" class="btn btn-primary">Reset Form</a>
+        <button type="submit" class="btn btn-outline-primary" style="width:110px">Delete</button>
+        <button type="reset" class="btn btn-outline-primary" style="width:110px" hidden>Reset Form</button>
     </div>
 </form>
 
@@ -34,6 +34,27 @@
         <h4 class="text-danger">@Model.info</h4>
     </div>
 </div>
+
+<table class="table table-bordered table-striped mt-2" style="width:100%">
+    <thead>
+        <tr>
+            <th>Document Number</th>
+            <th>Document Title</th>
+            <th>Rev</th>
+            <th>Type</th>
+            <th>Product</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>@Model.UserInput._id</td>
+                <td>@Model.UserInput.Title</td>
+                <td>@Model.UserInput.Revision</td>
+                <td>@Model.UserInput.Type</td>
+                <td>@Model.UserInput.Product</td>
+            </tr>
+    </tbody>
+</table>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
