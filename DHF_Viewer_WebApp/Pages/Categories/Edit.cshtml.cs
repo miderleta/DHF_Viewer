@@ -13,10 +13,10 @@ namespace DHF_Viewer_WebApp.Pages.Categories
         public ReturnedData UserInput { get; set; }
         
         public DocumentModel CouchDBConnectorDocumentModel { get; set; }
+        public DocumentModel NewDocData { get; set; }
 
         public void OnGet()
         {
-            //UserInput = new ReturnedData();
         }
 
         public async Task<IActionResult> OnPost()
@@ -44,13 +44,15 @@ namespace DHF_Viewer_WebApp.Pages.Categories
                     UserInput.Product = result.Product;
                     UserInput.Type = result.Type;
                     TempData["success"] = "Document Retrieved successfully";
+                    return RedirectToPage("update", UserInput);
                 }
             }
             catch
             {
-                TempData["success"] = "We have an error. Please check your entry";
+                TempData["success"] = "The document ID you entered does not exist. Please check your entry";
             }
-            return RedirectToPage("update", UserInput);
+            return Page();
+            //return RedirectToPage("update", UserInput);
         }
     }
 }
