@@ -59,7 +59,6 @@ namespace DHF_Viewer_WebApp.Pages.Categories
             else
             {
                 //code to search by doc name
-
                 try
                 {
                     var result = await dataLoader.SearchByDocumentName(CouchDBConnectorDocumentModel);
@@ -68,7 +67,6 @@ namespace DHF_Viewer_WebApp.Pages.Categories
                     {
                         Results.Add(result.Rows[i].value);
                     }
-                    TempData["success"] = "Data Retrieved successfully";
                     UserInput._rev = Results[0]._rev;
                     UserInput._id = Results[0]._id;
                     UserInput.Title = Results[0].Title;

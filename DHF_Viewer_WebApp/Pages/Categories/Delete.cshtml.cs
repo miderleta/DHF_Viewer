@@ -51,9 +51,7 @@ namespace DHF_Viewer_WebApp.Pages.Categories
                 if (result != null)
                 {
                     TempData["success"] = "Document Deleted successfully";
-                    //info = "Document " + UserInput._id + " has been deleted.";
                     info = "Below doument has been deleted:";
-                    //return RedirectToPage("delete", UserInput);
                     return Page();
                 }
             }
