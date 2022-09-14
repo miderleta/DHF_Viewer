@@ -6,7 +6,9 @@ namespace DHF_Viewer_WebApp.Models
     {
         public string? DB_Name { get; set; }
         public string? Doc_Count { get; set; }
+
         [StringLength(12)]
+        [MinLength(10, ErrorMessage = "Document ID must be at least 10 characters long.")]
         [RegularExpression((@"^[A-Z]+[a-zA-Z0-9""'\s-]*$"), ErrorMessage = "Document ID must be in Format: HXXX-XXX-XXX or MXXXXXXXXXX")]
         public string? _id { get; set; }
         public string? _rev { get; set; }

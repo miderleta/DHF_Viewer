@@ -22,7 +22,7 @@ DocumentModel userInput = new DocumentModel()
     Title = "PAD Final Test Station IQOQ Protocol",
     Type = "Test 4",
     Revision = "AA",
-    Product = "Product C",
+    Product = "Product F",
 };
 
 //retriving database info
@@ -102,24 +102,8 @@ catch (Exception ex)
 //{
 //    WriteLine("\n Getting all documents \n");
 //    var receivedData = await dataLoader.ReportAllDocuments();
-//    WriteLine(receivedData.Rows[0].value.Title);
-//    WriteLine(receivedData.Rows.Count());
-//    for (var i = 0; i < receivedData.Rows.Count; i++)
-//    {
-//        WriteLine("\n" + receivedData.Rows[i].value._id + " -- " + receivedData.Rows[i].value.Title + " Rev: " + receivedData.Rows[i].value.Revision);
-//    }
-//}
-//catch (Exception ex)
-//{
-//    WriteLine(ex.Message);
-//}
-
-//Report Doc by product
-//try
-//{
-//    var receivedData = await dataLoader.ReportByProduct(userInput);
-//    WriteLine("\n Documents associated with Product C: \n");
-//    WriteLine(receivedData.Rows.Count());
+//    WriteLine("Number of documents in the DB: " + receivedData.Rows.Count());
+//    //WriteLine(receivedData.Rows.Count());
 //    for (var i = 0; i < receivedData.Rows.Count; i++)
 //    {
 //        WriteLine("\n" + receivedData.Rows[i].value._id + " -- " + receivedData.Rows[i].value.Title + " Rev: " + receivedData.Rows[i].value.Revision);
@@ -133,9 +117,9 @@ catch (Exception ex)
 //Report Doc by product
 try
 {
-    var receivedData = await dataLoader.SearchByDocumentName(userInput);
-    WriteLine("\n Document Details: \n");
-    WriteLine(receivedData.Rows.Count());
+    var receivedData = await dataLoader.ReportByProduct(userInput);
+    WriteLine("\n Chosen Product: Product " + userInput.Product + "\n");
+    WriteLine(" Number of documents associated with chosen Product: " + receivedData.Rows.Count());
     for (var i = 0; i < receivedData.Rows.Count; i++)
     {
         WriteLine("\n" + receivedData.Rows[i].value._id + " -- " + receivedData.Rows[i].value.Title + " Rev: " + receivedData.Rows[i].value.Revision);
@@ -145,6 +129,22 @@ catch (Exception ex)
 {
     WriteLine(ex.Message);
 }
+
+//Report Doc by name
+//try
+//{
+//    var receivedData = await dataLoader.SearchByDocumentName(userInput);
+//    WriteLine("\n Document Details: \n");
+//    WriteLine(receivedData.Rows.Count());
+//    for (var i = 0; i < receivedData.Rows.Count; i++)
+//    {
+//        WriteLine("\n" + receivedData.Rows[i].value._id + " -- " + receivedData.Rows[i].value.Title + " Rev: " + receivedData.Rows[i].value.Revision);
+//    }
+//}
+//catch (Exception ex)
+//{
+//    WriteLine(ex.Message);
+//}
 
 
 
