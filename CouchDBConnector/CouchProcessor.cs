@@ -1,32 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CouchDBConnector;
+﻿using System.Text;
 using Newtonsoft.Json;
 using CouchDBConnector.Models;
-using System.Collections;
+using CouchDBConnector.Interfaces;
 
 namespace CouchDBConnector
 {
     public class CouchProcessor : ICouchProcessor
     {
         public string DatabaseUrl = "http://127.0.0.1:5984/dhf_viewer";
-        public Object Documents { get; set; }
        
         public string getEndpointAddress()
         {
             return this.DatabaseUrl;
         }
 
+        public string createApiCallUrl(DocumentModel documentData)
+        {
+            string apiCallUrl = this.getEndpointAddress() + "/" + documentData._id;
+
+            return apiCallUrl;
+        }
+
         //calls CouchDB API and retrives init data 
         public async Task<CouchModel> LoadCouchData()
         {
-            string url = this.getEndpointAddress();
+            string apiCallUrl = this.getEndpointAddress();
 
             //make a call to the API using ApiClient
-            using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.GetAsync(url))
+            using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.GetAsync(apiCallUrl))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -46,27 +47,14 @@ namespace CouchDBConnector
         //to create a new document.
         public async Task<String> CreateNewDocument(DocumentModel documentData)
         {
-            string url = this.getEndpointAddress();
+            //create URL for the API call
+            string apiCallUrl = createApiCallUrl(documentData);
 
-            var payloadData = new PayloadModel()
-            {
-                Title = documentData.Title,
-                Type = documentData.Type,
-                Revision = documentData.Revision,
-                Product = documentData.Product,
-            };
-
-            //crete databse URL with documentID
-            string urlWithDocID = url + "/" + documentData._id;
-
-            //code based on the YouTube video by Nick Proud 
-            //avalible at https://www.youtube.com/watch?v=Yi-O-HBGPeU&t=924s&ab_channel=NickProud
-            //convert model data to JSON and save it as payload
-            var payloadDataJson = JsonConvert.SerializeObject(payloadData);
-            var payload = new StringContent(payloadDataJson, Encoding.UTF8, "application/json");
+            IPayloadMaker payloadMaker = new PayloadMaker();
+            StringContent payload = payloadMaker.CreatePayload(documentData);
 
             //make a call to the API using ApiClient (PUT)
-            using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.PutAsync(urlWithDocID, payload))
+            using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.PutAsync(apiCallUrl, payload))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -86,23 +74,19 @@ namespace CouchDBConnector
         //calls CouchDB API and retrives document Data 
         public async Task<DocumentModel> ReadDocumentData(DocumentModel documentData)
         {
-            string url = this.getEndpointAddress();
-
-            //crete databse URL with documentID
-            string urlWithDocID = url + "/" + documentData._id;
+            //create URL for the API call
+            string apiCallUrl = createApiCallUrl(documentData);
 
             //make a call to the API using ApiClient
-            using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.GetAsync(urlWithDocID))
+            using HttpResponseMessage response = await ApiHelper.ApiCouchClient.GetAsync(apiCallUrl);
+            if (response.IsSuccessStatusCode)
             {
-                if (response.IsSuccessStatusCode)
-                {
-                    DocumentModel docData = await response.Content.ReadAsAsync<DocumentModel>();
-                    return docData;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                DocumentModel docData = await response.Content.ReadAsAsync<DocumentModel>();
+                return docData;
+            }
+            else
+            {
+                throw new Exception(response.ReasonPhrase);
             }
         }
 
@@ -112,10 +96,8 @@ namespace CouchDBConnector
         //for the API call.
         public async Task<String> UpdateDocument(DocumentModel documentData)
         {
-            string url = this.getEndpointAddress();
-
-            //crete documentID using documentNumber and pass it on in databaseURL
-            string urlWithDocID = url + "/" + documentData._id;
+            //create URL for the API call
+            string apiCallUrl = createApiCallUrl(documentData);
 
             //query the databse to retrive the _rev number of the document
             var couchDocRev = ReadDocumentData(documentData).Result._rev;
@@ -135,18 +117,16 @@ namespace CouchDBConnector
             var payload = new StringContent(payloadDataJson, Encoding.UTF8, "application/json");
 
             //make a call to the API using ApiClient (POST)
-            using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.PutAsync(urlWithDocID, payload))
+            using HttpResponseMessage response = await ApiHelper.ApiCouchClient.PutAsync(apiCallUrl, payload);
+            if (response.IsSuccessStatusCode)
             {
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = response.Content.ReadAsStringAsync().Result;
+                var result = response.Content.ReadAsStringAsync().Result;
 
-                    return result;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                return result;
+            }
+            else
+            {
+                throw new Exception(response.ReasonPhrase);
             }
 
         }
@@ -156,27 +136,23 @@ namespace CouchDBConnector
         //to the API using the document ID and revision to delete it.
         public async Task<String> DeleteDocument(DocumentModel documentData)
         {
-            string url = this.getEndpointAddress();
-
             //query the databse to retrive the _rev number of the document
             var couchDocRev = ReadDocumentData(documentData).Result._rev;
 
-            //crete targetURL with document _id and couchdb revision
-            string urlWithDocID = url + "/" + documentData._id + "?rev=" + couchDocRev;
+            //create URL for the API call
+            string apiCallUrl = createApiCallUrl(documentData) + "?rev=" + couchDocRev;
 
             //make a call to the API using ApiClient (POST)
-            using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.DeleteAsync(urlWithDocID))
+            using HttpResponseMessage response = await ApiHelper.ApiCouchClient.DeleteAsync(apiCallUrl);
+            if (response.IsSuccessStatusCode)
             {
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = response.Content.ReadAsStringAsync().Result;
+                var result = response.Content.ReadAsStringAsync().Result;
 
-                    return result;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                return result;
+            }
+            else
+            {
+                throw new Exception(response.ReasonPhrase);
             }
 
         }
