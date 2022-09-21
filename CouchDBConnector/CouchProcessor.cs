@@ -42,6 +42,8 @@ namespace CouchDBConnector
         }
 
         //CREATE DOCUMENT
+        //Function takes user input (as parameter), creates the payload and makes an API call
+        //to create a new document.
         public async Task<String> CreateNewDocument(DocumentModel documentData)
         {
             string url = this.getEndpointAddress();
@@ -81,7 +83,7 @@ namespace CouchDBConnector
         }
 
         //READ DOCUMENT DATA
-        ////calls CouchDB API and retrives document Data 
+        //calls CouchDB API and retrives document Data 
         public async Task<DocumentModel> ReadDocumentData(DocumentModel documentData)
         {
             string url = this.getEndpointAddress();
@@ -105,6 +107,9 @@ namespace CouchDBConnector
         }
 
         //UPDATE DOCUMENT
+        //Functions first queries the DB using document number entered by the user to retrieve
+        //the document revision, and then supplies updated document data as payload
+        //for the API call.
         public async Task<String> UpdateDocument(DocumentModel documentData)
         {
             string url = this.getEndpointAddress();
@@ -147,6 +152,8 @@ namespace CouchDBConnector
         }
 
         //DELETE DOCUMENT
+        //Function queries the DB to retrieve document ID and makes a call
+        //to the API using the document ID and revision to delete it.
         public async Task<String> DeleteDocument(DocumentModel documentData)
         {
             string url = this.getEndpointAddress();
