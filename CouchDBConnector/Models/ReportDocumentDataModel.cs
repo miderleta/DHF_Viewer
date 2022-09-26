@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CouchDBConnector.Models
 {
-    public class DocumentValuesModel
+    public class ReportDocumentDataModel
     {
         public DocumentModel value { get; set; }
 

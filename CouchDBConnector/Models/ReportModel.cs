@@ -9,6 +9,6 @@ namespace CouchDBConnector.Models
 {
     public class ReportModel
     {
-        public List<DocumentValuesModel> Rows { get; set; }
+        public List<ReportDocumentDataModel> Rows { get; set; }
     }
 }

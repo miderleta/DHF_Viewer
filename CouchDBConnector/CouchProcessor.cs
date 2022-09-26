@@ -8,6 +8,7 @@ namespace CouchDBConnector
     public class CouchProcessor : ICouchProcessor
     {
         public string DatabaseUrl = "http://127.0.0.1:5984/dhf_viewer";
+        IPayloadMaker payloadMaker = new PayloadMaker();
        
         public string getEndpointAddress()
         {
@@ -50,7 +51,6 @@ namespace CouchDBConnector
             //create URL for the API call
             string apiCallUrl = createApiCallUrl(documentData);
 
-            IPayloadMaker payloadMaker = new PayloadMaker();
             StringContent payload = payloadMaker.CreatePayload(documentData);
 
             //make a call to the API using ApiClient (PUT)
@@ -99,22 +99,8 @@ namespace CouchDBConnector
             //create URL for the API call
             string apiCallUrl = createApiCallUrl(documentData);
 
-            //query the databse to retrive the _rev number of the document
-            var couchDocRev = ReadDocumentData(documentData).Result._rev;
-
-            //assign required info to payloadData variable
-            var payloadData = new UpdateDocumentModel()
-            {
-                Title = documentData.Title,
-                _rev = couchDocRev,
-                Type = documentData.Type,
-                Revision = documentData.Revision,
-                Product = documentData.Product,
-            };
-
-            //convert model data to JSON and save it as payload
-            var payloadDataJson = JsonConvert.SerializeObject(payloadData);
-            var payload = new StringContent(payloadDataJson, Encoding.UTF8, "application/json");
+            //create payload
+            StringContent payload = payloadMaker.CreatePayloadForUpdatedDocument(documentData);
 
             //make a call to the API using ApiClient (POST)
             using HttpResponseMessage response = await ApiHelper.ApiCouchClient.PutAsync(apiCallUrl, payload);
