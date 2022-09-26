@@ -10,5 +10,6 @@ namespace CouchDBConnector.Interfaces
     public interface IPayloadMaker
     {
         StringContent CreatePayload(DocumentModel documentData);
+        StringContent CreatePayloadForUpdatedDocument(DocumentModel documentData);
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CouchDBConnector.Models
 {
-    public class UpdateDocumentModel
+    public class PayloadUpdateDocumentModel
     {
         public string? Title { get; set; }
         public string? _rev { get; set; }
