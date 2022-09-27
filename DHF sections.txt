@@ -1,0 +1,30 @@
+Section 1   / Title: Change Proposals           
+            / Content: (New Product Change Request document (e.g. DP, CR, NPI etc.)
+Section 2   / Title: User Requirement Documents
+            / Content: URDs
+Section 3   / Title: Design Reviews
+            / Content: Design Review documents and minutes (e.g. Design Reviews, Phase Reviews, Design Transfer etc.)
+Section 4   / Title: Desgn Plan
+            / Content: Design and Development Plan (DDP) 
+Section 5   / Title: Design Inputs
+            / Content: PRD, SRS, HRS, Traceability Matrix, Compliance Report (EUMDR), Algorithm Spec, Programmer software specification, Software Architectural Design Specification, DIOV, DIOTV
+Section 6   / Title: Design Outputs 
+            / Content: SDS, SCMMP, Speech Prompts, Software Source Code, Executable Code, System Specifications, Membranes, Unit BoMs, Artwork, Gerbers, Component Specifications and Drawings
+Section 7   / Title: Design Verification
+            / Content: Component level verification plans, protocols and reports, Software verification plans, protocols and reports
+Section 8   / Title: Design Validation
+            / Content: Product level validation plans, protocols and reports, Usability Protocols and Reports 
+Section 9   / Title: Design Transfer
+            / Content: Manufacturing documents: GRN master lists, GIWI, Kitting, Process Flows, Assembly WI, Final Visual Inspection Docs, Labelling and Packaging, User Manuals, User Guides, Hangtag, Production Test, Sales BoMs, Despatch, Declaration of conformity, Warranty statements, Etc.
+Section 10  / Title: Design Change Documents
+            / Content: CDPs, CRs – changes post design transfer, CMRs, ECR, DCC
+Section 11  / Title: Risk Management 
+            / Content: Preliminary Hazard Analysis, Risk Management Plan, Risk and Hazard Analysis, Risk Assessments, FMEA – DFMEA / PFMEA
+Section 12  / Title: Regulatory – Regulatory Plan, submissions and labelling 
+            / Content: CB and UL Test certificate and reports, NTF, Notice of completion and authorisation
+Section 13  / Title: Contractor/Consultant Information 
+            / Content: Any related information
+Section 14  / Title: Technical Description of Device 
+            / Content: Technical descriptions
+Section 15  / Title: Lesson Learned Review
+            / Content: Lessons Learned Reviews
