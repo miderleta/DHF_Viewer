@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Development\\DHF_Viewer\\CouchDBConnector\\CouchDBConnector.csproj": {}
+    "/home/mderleta/Development/DHF_Viewer/CouchDBConnector/CouchDBConnector.csproj": {}
   },
   "projects": {
-    "C:\\Development\\DHF_Viewer\\CouchDBConnector\\CouchDBConnector.csproj": {
+    "/home/mderleta/Development/DHF_Viewer/CouchDBConnector/CouchDBConnector.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Development\\DHF_Viewer\\CouchDBConnector\\CouchDBConnector.csproj",
+        "projectUniqueName": "/home/mderleta/Development/DHF_Viewer/CouchDBConnector/CouchDBConnector.csproj",
         "projectName": "CouchDBConnector",
-        "projectPath": "C:\\Development\\DHF_Viewer\\CouchDBConnector\\CouchDBConnector.csproj",
-        "packagesPath": "C:\\Users\\mderleta\\.nuget\\packages\\",
-        "outputPath": "C:\\Development\\DHF_Viewer\\CouchDBConnector\\obj\\",
+        "projectPath": "/home/mderleta/Development/DHF_Viewer/CouchDBConnector/CouchDBConnector.csproj",
+        "packagesPath": "/home/mderleta/.nuget/packages/",
+        "outputPath": "/home/mderleta/Development/DHF_Viewer/CouchDBConnector/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\mderleta\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/mderleta/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -86,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
         }
       }
     }
