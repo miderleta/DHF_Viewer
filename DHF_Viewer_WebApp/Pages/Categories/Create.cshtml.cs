@@ -1,7 +1,6 @@
-using CouchDBConnector;
-using CouchDBConnector.Interfaces;
-using CouchDBConnector.Models;
 using DHF_Viewer_WebApp.Models;
+using DHF_Viewer_WebApp.Interfaces;
+using DHF_Viewer_WebApp.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
