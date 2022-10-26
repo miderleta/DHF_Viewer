@@ -1,7 +1,5 @@
-using CouchDBConnector;
-using CouchDBConnector.Interfaces;
-using CouchDBConnector.Models;
 using DHF_Viewer_WebApp.Models;
+using DHF_Viewer_WebApp.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -9,11 +7,16 @@ namespace DHF_Viewer_WebApp.Pages.Categories
 {
     public class CreateModel : PageModel
     {
-       
         [BindProperty]
         public ReturnedData UserInput { get; set; }
-        public DocumentModel CouchDBConnectorDocumentModel { get; set; }
-        public String? output { get; set; }
+        public DocumentModel NewDocumentData { get; set; }
+        
+        private readonly ICouchProcessor _couchProcessor;
+
+        public CreateModel(ICouchProcessor couchProcessor)
+        {
+            _couchProcessor = couchProcessor;
+        }
 
         public void OnGet()
         {
@@ -23,27 +26,19 @@ namespace DHF_Viewer_WebApp.Pages.Categories
         {
             if(ModelState.IsValid)
             {
-                output = UserInput._id + " " + UserInput.Title + " " +
-                    UserInput.Revision + " " + UserInput.Type;
+                NewDocumentData = new DocumentModel();
 
-                CouchDBConnectorDocumentModel = new DocumentModel();
-
-                CouchDBConnectorDocumentModel._id = UserInput._id;
-                CouchDBConnectorDocumentModel._rev = "";
-                CouchDBConnectorDocumentModel.Title = UserInput.Title;
-                CouchDBConnectorDocumentModel.Revision = UserInput.Revision;
-                CouchDBConnectorDocumentModel.Product = UserInput.Product;
-                CouchDBConnectorDocumentModel.Type = UserInput.Type;
-
-                //Init HttpClient and CouchProcessor objects
-                IApiHelper client = new ApiHelper();
-                client.InitializeCouchClient();
-                ICouchProcessor dataLoader = new CouchProcessor();
+                NewDocumentData._id = UserInput._id;
+                NewDocumentData._rev = "";
+                NewDocumentData.Title = UserInput.Title;
+                NewDocumentData.Revision = UserInput.Revision;
+                NewDocumentData.Product = UserInput.Product;
+                NewDocumentData.Type = UserInput.Type;
 
                 //call API
                 try
                 {
-                    var result = await dataLoader.CreateNewDocument(CouchDBConnectorDocumentModel);
+                    var result = await _couchProcessor.CreateNewDocument(NewDocumentData);
                     if(result != null)
                     {
                         TempData["success"] = "New Document created successfully";

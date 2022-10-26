@@ -1,6 +1,5 @@
-using CouchDBConnector;
-using CouchDBConnector.Interfaces;
-using CouchDBConnector.Models;
+using DHF_Viewer_WebApp.Interfaces;
+using DHF_Viewer_WebApp.Utilities;
 using DHF_Viewer_WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,11 +8,16 @@ namespace DHF_Viewer_WebApp.Pages.Categories
 {
     public class DeleteModel : PageModel
     {
+        private readonly ICouchProcessor _couchProcessor;
         [BindProperty]
         public ReturnedData UserInput { get; set; }
-
-        public DocumentModel CouchDBConnectorDocumentModel { get; set; }
+        public DocumentModel DocumentData { get; set; }
         public String? info { get; set; }
+
+        public DeleteModel(ICouchProcessor couchProcessor)
+        {
+            _couchProcessor = couchProcessor;
+        }
 
         public void OnGet()
         {
@@ -22,21 +26,19 @@ namespace DHF_Viewer_WebApp.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
-            CouchDBConnectorDocumentModel = new DocumentModel();
-            //UserInput._id = Request.Form["UserInput._id"];
-            var documentNumber = UserInput._id;
-            CouchDBConnectorDocumentModel._id = documentNumber;
+            DocumentData = new DocumentModel();
+            DocumentData._id = UserInput._id;
 
             //Init HttpClient and CouchProcessor objects
-            IApiHelper client = new ApiHelper();
-            client.InitializeCouchClient();
-            ICouchProcessor dataLoader = new CouchProcessor();
+            //IApiHelper client = new ApiHelper();
+            //client.InitializeCouchClient();
+            //ICouchProcessor dataLoader = new CouchProcessor();
 
             //call API
             try
             {
                 //Retrive doc data for disply to user
-                var docData = await dataLoader.ReadDocumentData(CouchDBConnectorDocumentModel);
+                var docData = await _couchProcessor.ReadDocumentData(DocumentData);
                 if (docData != null)
                 {
                     UserInput._rev = docData._rev;
@@ -47,7 +49,7 @@ namespace DHF_Viewer_WebApp.Pages.Categories
                     UserInput.Type = docData.Type;
                 }
                 
-                var result = await dataLoader.DeleteDocument(CouchDBConnectorDocumentModel);
+                var result = await _couchProcessor.DeleteDocument(DocumentData);
                 if (result != null)
                 {
                     TempData["success"] = "Document Deleted successfully";

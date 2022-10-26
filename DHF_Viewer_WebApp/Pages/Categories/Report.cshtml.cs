@@ -1,6 +1,5 @@
-using CouchDBConnector;
-using CouchDBConnector.Interfaces;
-using CouchDBConnector.Models;
+using DHF_Viewer_WebApp.Interfaces;
+using DHF_Viewer_WebApp.Utilities;
 using DHF_Viewer_WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,9 +10,17 @@ namespace DHF_Viewer_WebApp.Pages.Categories
     {
         [BindProperty]
         public ReturnedData UserInput { get; set; }
-        public DocumentModel CouchDBConnectorDocumentModel { get; set; }
+        public DocumentModel DocumentData { get; set; }
         public List<DocumentModel> Results { get; set; }
         public String? output { get; set; }
+
+        private readonly ICouchProcessor _couchProcessor;
+
+        public ReportModel(ICouchProcessor couchProcessor)
+        {
+            _couchProcessor = couchProcessor;
+        }
+
         public void OnGet()
         {
             Results = new List<DocumentModel>();
@@ -21,19 +28,14 @@ namespace DHF_Viewer_WebApp.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
-            CouchDBConnectorDocumentModel = new DocumentModel();
-            CouchDBConnectorDocumentModel.Product = UserInput.Product;
+            DocumentData = new DocumentModel();
+            DocumentData.Product = UserInput.Product;
 
-            //Init HttpClient and CouchProcessor objects
-            IApiHelper client = new ApiHelper();
-            client.InitializeCouchClient();
-            ICouchProcessor dataLoader = new CouchProcessor();
-
-            if (CouchDBConnectorDocumentModel.Product == "all_products")
+            if (DocumentData.Product == "all_products")
             {
                 try
                 {
-                    var result = await dataLoader.ReportAllDocuments();
+                    var result = await _couchProcessor.ReportAllDocuments();
                     Results = new List<DocumentModel>();
                     for (var i = 0; i < result.Rows.Count; i++)
                     {
@@ -54,7 +56,7 @@ namespace DHF_Viewer_WebApp.Pages.Categories
                 //call API
                 try
                 {
-                    var result = await dataLoader.ReportByProduct(CouchDBConnectorDocumentModel);
+                    var result = await _couchProcessor.ReportByProduct(DocumentData);
                     Results = new List<DocumentModel>();
                     for (var i = 0; i < result.Rows.Count; i++)
                     {

@@ -1,0 +1,12 @@
+add new databse to couchDB server with authorisation (command line)
+curl -X PUT http://userM:XCSirz12@127.0.0.1:5984
+curl -X GET http://userM:XCSirz12@127.0.0.1:5984/recipes
+curl -X GET http://127.0.0.1:5984/recipes
+
+cookie value: 42EF98F6AEDB13598F834F29E8D51575
+
+
+TO DISPLAY DIFFERENT VIEWs:
+All Products: http://127.0.0.1:5984/dhf_viewer/_design/by_product/_view/all_products
+Select Product: http://127.0.0.1:5984/dhf_viewer/_design/by_product/_view/Product_X
+By title: http://127.0.0.1:5984/dhf_viewer/_design/by_product/_view/all_products?key="<doc title>"

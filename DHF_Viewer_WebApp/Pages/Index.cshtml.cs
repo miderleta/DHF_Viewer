@@ -1,29 +1,28 @@
-﻿using CouchDBConnector;
-using CouchDBConnector.Interfaces;
-using Microsoft.AspNetCore.Mvc;
+﻿using DHF_Viewer_WebApp.Interfaces;
+using DHF_Viewer_WebApp.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DHF_Viewer_WebApp.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly IApiHelper _apiHelper;
+        private readonly ICouchProcessor _couchProcessor;
         public Task<CouchModel>? receivedData;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(IApiHelper apiHelper, ICouchProcessor couchProcessor)
         {
-            _logger = logger;
+            _apiHelper = apiHelper;
+            _couchProcessor = couchProcessor;
         }
 
         public void OnGet()
         {
-            //Init HttpClient and CouchProcessor objects
-            IApiHelper client = new ApiHelper();
-            client.InitializeCouchClient();
-            ICouchProcessor dataLoader = new CouchProcessor();
-
+            //use dependency injection
+            _apiHelper.InitializeCouchClient();
+           
             //Get data from CouchDB
-            receivedData = dataLoader.LoadCouchData();
+            receivedData = _couchProcessor.LoadCouchData();
         }
     }
 }
