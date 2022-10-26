@@ -10,8 +10,15 @@ namespace DHF_Viewer_WebApp.Pages.Categories
     {
         [BindProperty]
         public ReturnedData UserInput { get; set; }
-        public DocumentModel CouchDBConnectorDocumentModel { get; set; }
+        public DocumentModel DocumentData { get; set; }
         public ReturnedData MyData { get; set; }
+
+        private readonly ICouchProcessor _couchProcessor;
+
+        public UpdateModel(ICouchProcessor couchProcessor)
+        {
+            _couchProcessor = couchProcessor;
+        }
 
         public void OnGet(ReturnedData UserInput)
         {
@@ -20,23 +27,18 @@ namespace DHF_Viewer_WebApp.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
-            CouchDBConnectorDocumentModel = new DocumentModel();
-            CouchDBConnectorDocumentModel._rev = Request.Form["UserInput._rev"];
-            CouchDBConnectorDocumentModel._id = Request.Form["UserInput._id"];
-            CouchDBConnectorDocumentModel.Title = Request.Form["UserInput.Title"];
-            CouchDBConnectorDocumentModel.Revision = Request.Form["UserInput.Revision"];
-            CouchDBConnectorDocumentModel.Product = Request.Form["UserInput.Product"];
-            CouchDBConnectorDocumentModel.Type = Request.Form["UserInput.Type"];
-
-            //Init HttpClient and CouchProcessor objects
-            IApiHelper client = new ApiHelper();
-            client.InitializeCouchClient();
-            ICouchProcessor dataLoader = new CouchProcessor();
+            DocumentData = new DocumentModel();
+            DocumentData._rev = Request.Form["UserInput._rev"];
+            DocumentData._id = Request.Form["UserInput._id"];
+            DocumentData.Title = Request.Form["UserInput.Title"];
+            DocumentData.Revision = Request.Form["UserInput.Revision"];
+            DocumentData.Product = Request.Form["UserInput.Product"];
+            DocumentData.Type = Request.Form["UserInput.Type"];
 
             //call API
             try
             {
-                var result = await dataLoader.UpdateDocument(CouchDBConnectorDocumentModel);
+                var result = await _couchProcessor.UpdateDocument(DocumentData);
                 if (result != null)
                 {
                     TempData["success"] = "Document Updated successfully";

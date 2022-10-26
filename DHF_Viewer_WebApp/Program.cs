@@ -1,7 +1,12 @@
+using DHF_Viewer_WebApp.Interfaces;
+using DHF_Viewer_WebApp.Utilities;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<IApiHelper, ApiHelper>();
+builder.Services.AddScoped<ICouchProcessor, CouchProcessor>();
 
 var app = builder.Build();
 

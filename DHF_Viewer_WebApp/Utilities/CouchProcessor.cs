@@ -1,15 +1,14 @@
-﻿using System.Text;
-using Newtonsoft.Json;
-using DHF_Viewer_WebApp.Models;
+﻿using DHF_Viewer_WebApp.Models;
 using DHF_Viewer_WebApp.Interfaces;
+using DHF_Viewer_WebApp.Utilities;
 
 namespace DHF_Viewer_WebApp.Utilities
 {
     public class CouchProcessor : ICouchProcessor
     {
+        public IPayloadMaker _payloadMaker = new PayloadMaker();
         public string DatabaseUrl = "http://127.0.0.1:5984/dhf_viewer";
-        IPayloadMaker payloadMaker = new PayloadMaker();
-       
+   
         public string getEndpointAddress()
         {
             return this.DatabaseUrl;
@@ -51,7 +50,7 @@ namespace DHF_Viewer_WebApp.Utilities
             //create URL for the API call
             string apiCallUrl = createApiCallUrl(documentData);
 
-            StringContent payload = payloadMaker.CreatePayload(documentData);
+            StringContent payload = _payloadMaker.CreatePayload(documentData);
 
             //make a call to the API using ApiClient (PUT)
             using (HttpResponseMessage response = await ApiHelper.ApiCouchClient.PutAsync(apiCallUrl, payload))
@@ -100,7 +99,7 @@ namespace DHF_Viewer_WebApp.Utilities
             string apiCallUrl = createApiCallUrl(documentData);
 
             //create payload
-            StringContent payload = payloadMaker.CreatePayloadForUpdatedDocument(documentData);
+            StringContent payload = _payloadMaker.CreatePayloadForUpdatedDocument(documentData);
 
             //make a call to the API using ApiClient (POST)
             using HttpResponseMessage response = await ApiHelper.ApiCouchClient.PutAsync(apiCallUrl, payload);

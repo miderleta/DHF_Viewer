@@ -9,8 +9,7 @@ namespace DHF_Viewer_WebApp.Utilities
     {
         PayloadModel? payloadData { get; set; }
         PayloadUpdateDocumentModel? updateDocumentPayload { get; set; }
-        ICouchProcessor? Processor { get; set; }
-
+        public ICouchProcessor _couchProcessor;
         public StringContent CreatePayload(DocumentModel documentData)
         {
             payloadData = new PayloadModel()
@@ -32,10 +31,9 @@ namespace DHF_Viewer_WebApp.Utilities
 
         public StringContent CreatePayloadForUpdatedDocument(DocumentModel documentData)
         {
-            Processor = new CouchProcessor();
-
+            _couchProcessor = new CouchProcessor();
             //query the databse to retrive the _rev number of the document
-            string couchDocRev = Processor.ReadDocumentData(documentData).Result._rev;
+            string? couchDocRev = _couchProcessor.ReadDocumentData(documentData).Result._rev;
 
             //assign required info to payloadData variable
             updateDocumentPayload = new PayloadUpdateDocumentModel()

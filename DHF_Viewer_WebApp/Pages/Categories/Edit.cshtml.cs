@@ -11,8 +11,15 @@ namespace DHF_Viewer_WebApp.Pages.Categories
         [BindProperty]
         public ReturnedData UserInput { get; set; }
         
-        public DocumentModel CouchDBConnectorDocumentModel { get; set; }
+        public DocumentModel DocumentData { get; set; }
         public DocumentModel NewDocData { get; set; }
+
+        private readonly ICouchProcessor _couchProcessor;
+
+        public EditModel(ICouchProcessor couchProcessor)
+        {
+            _couchProcessor = couchProcessor;
+        }
 
         public void OnGet()
         {
@@ -20,20 +27,13 @@ namespace DHF_Viewer_WebApp.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
-            CouchDBConnectorDocumentModel = new DocumentModel();
-            //UserInput._id = Request.Form["UserInput._id"];
-            var documentNumber = UserInput._id;
-            CouchDBConnectorDocumentModel._id = documentNumber;
-
-            //Init HttpClient and CouchProcessor objects
-            IApiHelper client = new ApiHelper();
-            client.InitializeCouchClient();
-            ICouchProcessor dataLoader = new CouchProcessor();
+            DocumentData = new DocumentModel();
+            DocumentData._id = UserInput._id;
 
             //call API
             try
             {
-                var result = await dataLoader.ReadDocumentData(CouchDBConnectorDocumentModel);
+                var result = await _couchProcessor.ReadDocumentData(DocumentData);
                 if (result != null)
                 {
                     UserInput._rev = result._rev;

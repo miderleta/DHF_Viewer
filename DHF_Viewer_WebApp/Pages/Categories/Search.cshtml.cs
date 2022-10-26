@@ -11,8 +11,15 @@ namespace DHF_Viewer_WebApp.Pages.Categories
         [BindProperty]
         public ReturnedData UserInput { get; set; }
 
-        public DocumentModel CouchDBConnectorDocumentModel { get; set; }
+        public DocumentModel DocumentData { get; set; }
         public List<DocumentModel> Results { get; set; }
+
+        private readonly ICouchProcessor _couchProcessor;
+
+        public SearchModel(ICouchProcessor couchProcessor)
+        {
+            _couchProcessor = couchProcessor;
+        }
 
         public void OnGet()
         {
@@ -21,23 +28,16 @@ namespace DHF_Viewer_WebApp.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
-            CouchDBConnectorDocumentModel = new DocumentModel();
-            //UserInput._id = Request.Form["UserInput._id"];
-            //var documentNumber = UserInput._id;
-            CouchDBConnectorDocumentModel._id = UserInput._id;
-            CouchDBConnectorDocumentModel.Title = UserInput.Title;
-
-            //Init HttpClient and CouchProcessor objects
-            IApiHelper client = new ApiHelper();
-            client.InitializeCouchClient();
-            ICouchProcessor dataLoader = new CouchProcessor();
+            DocumentData = new DocumentModel();
+            DocumentData._id = UserInput._id;
+            DocumentData.Title = UserInput.Title;
 
             //call API
-            if (CouchDBConnectorDocumentModel._id != null)
+            if (DocumentData._id != null)
             {
                 try
                 {
-                    var result = await dataLoader.ReadDocumentData(CouchDBConnectorDocumentModel);
+                    var result = await _couchProcessor.ReadDocumentData(DocumentData);
                     if (result != null)
                     {
                         UserInput._rev = result._rev;
@@ -60,7 +60,7 @@ namespace DHF_Viewer_WebApp.Pages.Categories
                 //code to search by doc name
                 try
                 {
-                    var result = await dataLoader.SearchByDocumentName(CouchDBConnectorDocumentModel);
+                    var result = await _couchProcessor.SearchByDocumentName(DocumentData);
                     Results = new List<DocumentModel>();
                     for (var i = 0; i < result.Rows.Count; i++)
                     {
